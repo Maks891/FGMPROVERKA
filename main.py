@@ -25,7 +25,7 @@ from commands.earnings.farm.main import *
 from commands.earnings.generator.main import *
 
 
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=6961234870:AAG89cKD0T-UhA1g35nYYP-GDaWAREOMdSI)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
