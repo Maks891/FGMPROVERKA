@@ -1,1 +1,1 @@
-import aiogram
+async def vidat_cmd_s
