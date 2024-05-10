@@ -1,4 +1,4 @@
-async def vidat_cmd_s(message):
+async def vidat_cmd(message):
             await register_users(message)
             name, balance, btc, bank = await getbalance(message)
             reply_user_name = message.reply_to_message.from_user.get_mention(as_html=True)
