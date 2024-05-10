@@ -56,7 +56,7 @@ async def bank_cmd(message):
    💵 Под депозитом: {depozit}$
    ⏳ Можно снять: {timedepozit}
 
-{ads}''', parse_mode='html', disable_web_page_preview=True)
+''', parse_mode='html', disable_web_page_preview=True)
 
 
 async def putbank(message):
