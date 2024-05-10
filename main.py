@@ -87,6 +87,10 @@ async def donat_list_s(message: types.Message):
 async def status_list_s(message: types.Message):
     await status_list(message)
 
+@dp.message_handler(lambda message: message.text in ['Выдать', 'выдать'])
+async def vidat(message: types.Message):
+    await vidat(message)
+
 
 @dp.message_handler(lambda message: message.text in ['мой статус', 'Мой статус'])
 async def my_status_s(message: types.Message):
