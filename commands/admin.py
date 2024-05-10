@@ -1,6 +1,6 @@
 async def vidat_cmd_s(message):
-            msg = message
-            user_name = message.from_user.get_mention(as_html=True)
+            await register_users(message)
+            name, balance, btc, bank = await getbalance(message)
             reply_user_name = message.reply_to_message.from_user.get_mention(as_html=True)
             win = ['🙂', '😋', '😄', '🤑', '😃']
             rwin = random.choice(win)
@@ -8,7 +8,7 @@ async def vidat_cmd_s(message):
             reply_user_id = msg.reply_to_message.from_user.id
             perevod2 = '{:,}'.format(perevod)
             user_id = msg.from_user.id
-            user_status = cursor.execute("SELECT user_status from users where user_id = ?",
+            status = cursor.execute("SELECT status from users where user_id = ?",
                                          (message.from_user.id,)).fetchone()
             balance2 = cursor.execute("SELECT balance from users where user_id = ?",
                                       (message.reply_to_message.from_user.id,)).fetchone()
