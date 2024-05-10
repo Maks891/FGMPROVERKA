@@ -13,7 +13,7 @@ async def balance_cmd(message):
 🏦Банк: {bank}$
 💽Биткоины: {btc}🌐
 
-{ads}''', parse_mode='html', disable_web_page_preview=True)
+''', parse_mode='html', disable_web_page_preview=True)
 
 
 async def btc_cmd(message):
