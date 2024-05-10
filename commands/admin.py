@@ -1,5 +1,5 @@
-async def vidat_cmd_s
- msg = message
+async def vidat_cmd_s(message):
+            msg = message
             user_name = message.from_user.get_mention(as_html=True)
             reply_user_name = message.reply_to_message.from_user.get_mention(as_html=True)
             win = ['🙂', '😋', '😄', '🤑', '😃']
