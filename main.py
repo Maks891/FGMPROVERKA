@@ -11,6 +11,7 @@ from commands.peredat import *
 from commands.games.games import *
 from commands.assets.auto import automatisation
 from commands.ore.btcs import *
+from commands.admin import *
 from commands.earnings.business.main import *
 from commands.ore.dig import *
 from commands.ore.sell import *
