@@ -96,6 +96,17 @@ async def balance_cmd(message):
 
     bank = '{:,}'.format(bank).replace(',', '.')
     btc = '{:,}'.format(btc).replace(',', '.')
+    
+    status_dict = {
+        0: "Обычный",
+        1: "Standart VIP",
+        2: "Gold VIP",
+        3: "Platinum VIP",
+        4: "Администратор"
+    }
+
+    st = status_dict.get(status, status_dict[0])
+    
     await message.answer(f'''👫Ник: {name}
 💰Деньги: {balance}$
 🏆 Статус: {st}
