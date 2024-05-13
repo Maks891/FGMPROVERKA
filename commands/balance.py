@@ -5,26 +5,6 @@ from commands.assets.transform import transform
 from decimal import Decimal
 
 
-@antispam
-async def balance_cmd(message):
-    name, balance, btc, bank = await getbalance(message.from_user.id)
-    ads = await getads()
-
-    if len(str(balance)) < 35:
-        balance = '{:,}'.format(balance).replace(',', '.')
-    else:
-        balance = Decimal(balance)
-        balance = f"{balance:1.1e}"
-
-    bank = '{:,}'.format(bank).replace(',', '.')
-    btc = '{:,}'.format(btc).replace(',', '.')
-    await message.answer(f'''👫Ник: {name}
-💰Деньги: {balance}$
-🏦Банк: {bank}$
-💽Биткоины: {btc}🌐
-
-{ads}''', parse_mode='html', disable_web_page_preview=True)
-
 
 @antispam
 async def btc_cmd(message):
@@ -102,3 +82,24 @@ async def profil_cmd(message):
 📦 Имущество:{txt}
 
 📅 Дата регистрации: <blockquote>{dregister}</blockquote>''')
+
+@antispam
+async def balance_cmd(message):
+    name, balance, btc, status, bank = await getbalance(message.from_user.id)
+    ads = await getads()
+
+    if len(str(balance)) < 35:
+        balance = '{:,}'.format(balance).replace(',', '.')
+    else:
+        balance = Decimal(balance)
+        balance = f"{balance:1.1e}"
+
+    bank = '{:,}'.format(bank).replace(',', '.')
+    btc = '{:,}'.format(btc).replace(',', '.')
+    await message.answer(f'''👫Ник: {name}
+💰Деньги: {balance}$
+🏆 Статус: {st}
+🏦Банк: {bank}$
+💽Биткоины: {btc}🌐
+
+{ads}''', parse_mode='html', disable_web_page_preview=True)
