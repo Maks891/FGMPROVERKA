@@ -308,6 +308,10 @@ async def setname_cmd_s(message: types.Message):
 async def dat_cmd_s(message: types.Message):
     await dat_cmd(message)
 
+@dp.message_handler(lambda message: message.text.startswith("битдать") or message.text.startswith("Битдать"))
+async def bdat_cmd_s(message: types.Message):
+    await bdat_cmd(message)
+
 
 @dp.message_handler(lambda message: message.text.startswith("дартс") or message.text.startswith("Дартс"))
 async def darts_cmd_s(message: types.Message):
