@@ -99,6 +99,8 @@ async def profil_cmd(message):
 🌟 Опыт: {fdata[5]}
 🎲 Всего сыграно игр: {fdata[6]}
 
+ssss
+
 📦 Имущество:{txt}
 
 📅 Дата регистрации: <blockquote>{dregister}</blockquote>''')
