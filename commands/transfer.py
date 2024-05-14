@@ -60,6 +60,41 @@ async def dat_cmd(message: types.Message):
     else:
         await message.reply(f'{url}, вы не можете передать отрицательное число игроку {rloser}', parse_mode='html')
 
+@antispam
+async def bdat_cmd(message: types.Message):
+    user_id = message.from_user.id
+    rwin, rloser = await win_luser()
+    btc = await get_btc(user_id)
+    url = await url_name(user_id)
+    status = await getstatus(user_id)
+
+    try:
+        reply_user_id = message.reply_to_message.from_user.id
+        url2 = await url_name(reply_user_id)
+    except:
+        await message.reply(f'{url}, чтобы передать деньги нужно ответить на сообщение пользователя {rloser}')
+        return
+
+    try:
+        summ = message.text.split()[1].replace('е', 'e')
+        summ = int(float(summ))
+        summ2 = '{:,}'.format(summ).replace(',', '.')
+    except:
+        await message.reply(f'{url}, вы не ввели сумму которую хотите передать игроку {rloser}')
+        return
+
+
+    if summ > 0:
+        if int(btc) >= summ:
+            await message.answer(f'Вы передали {summ2} Биткоинов! игроку {url2} {rwin}', parse_mode='html')
+            await getperevod(summ, user_id, reply_user_id)
+            await new_log(f'#перевод\n{user_id}\nСумма: {summ2}\nПередал: {reply_user_id}', 'money_transfers')
+        else:
+            await message.reply(f'{url}, вы не можете передать больше чем у вас есть на балансе {rloser}', parse_mode='html')
+
+    else:
+        await message.reply(f'{url}, вы не можете передать отрицательное число игроку {rloser}', parse_mode='html')
+
 
 @antispam
 async def limit_cmd(message):
