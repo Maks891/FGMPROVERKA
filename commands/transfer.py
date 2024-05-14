@@ -66,7 +66,7 @@ async def bdat_cmd(message: types.Message):
     user_id = message.from_user.id
     rwin, rloser = await win_luser()
     per = await getlimitdb(message)
-    btc = await get_btc(user_id)
+    btc = await get_balance(user_id)
     url = await url_name(user_id)
     status = await getstatus(user_id)
 
