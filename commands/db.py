@@ -121,6 +121,10 @@ async def getbalance(user_id):
     data = cursor.execute('SELECT name, balance, btc, bank FROM users WHERE user_id = ?', (user_id,)).fetchone()
     return data[0], int(data[1]), data[2], data[3]
 
+async def get_btc(user_id):
+    data = cursor.execute('SELECT btc FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    return data[0] if data else 0
+
 
 async def getpofildb(user_id):
     data = cursor.execute('SELECT balance, btc, bank, ecoins, energy, exp, games, rating, dregister FROM users WHERE user_id = ?', (user_id,)).fetchone()
