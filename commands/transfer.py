@@ -1,6 +1,5 @@
 from aiogram import types
 from commands.db import getperevod, getidname, getlimitdb, getstatus, url_name, get_balance
-from commands.db import get_btc
 from commands.main import geturl
 from commands.main import win_luser
 from commands.admin.loger import new_log
