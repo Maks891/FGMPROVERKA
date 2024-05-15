@@ -1,5 +1,5 @@
 from aiogram import types
-from commands.db import getperevod, getidname, getlimitdb, getstatus, url_name, get_balance, get_btc
+from commands.db import getperevod, getperevodbtc, getidname, getlimitdb, getstatus, url_name, get_balance, get_btc
 from commands.main import geturl
 from commands.main import win_luser
 from commands.admin.loger import new_log
@@ -86,7 +86,7 @@ async def bdat_cmd(message: types.Message):
     if btc_amount > 0:
         if btc >= btc_amount:
             await message.answer(f'Вы передали {btc_amount} Биткоинов! игроку {url2} {rwin}', parse_mode='html')
-            await getperevod(btc_amount, user_id, reply_user_id)
+            await getperevodbtc(btc_amount, user_id, reply_user_id)
             await new_log(f'#перевод\n{user_id}\nСумма: {btc_amount}\nПередал: {reply_user_id}', 'bitcoin_transfers')
         else:
             await message.reply(f'{url}, у вас недостаточно биткоинов для передачи {rloser}', parse_mode='html')
