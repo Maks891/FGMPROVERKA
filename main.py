@@ -111,7 +111,7 @@ async def profil_cmd_s(message: types.Message):
 
 @dp.message_handler(lambda message: message.text.lower().startswith('инфо'))
 async def info_cmd_s(message: types.Message):
-    await info_cmd(mwssage)
+    await info_cmd(message)
 
 
 @dp.message_handler(lambda message: message.text in ['мой ник', 'Мой ник'])
