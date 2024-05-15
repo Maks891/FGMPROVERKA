@@ -84,6 +84,7 @@ async def info_cmd_s(message):
         rating2 = '{:,}'.format(rating)
         btc2 = '{:,}'.format(btc)
         depozit2 = '{:,}'.format(depozit)
+        if user_id in cfg.admin:
         await bot.send_message(message.chat.id, f'''
 {name}, информация о игроке:
 
