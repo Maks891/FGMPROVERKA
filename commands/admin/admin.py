@@ -97,6 +97,8 @@ async def info_cmd_s(message):
     💽Биткоины: {btc2}
     🧊Статус: {status_reply2}
 ''', parse_mode='html')
+     except:
+         return await message.answer(f'{url}, чтобы выдать деньги нужно ответить на сообщение пользователя {rloser}')
 
 
 
