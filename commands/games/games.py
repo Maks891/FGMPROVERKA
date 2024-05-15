@@ -203,6 +203,16 @@ async def game_casino(message):
     }
 
     try:
+        split_text = message.text.split()
+        if len(split_text) < 3: return
+        elif split_text[2] in ['все', 'всё']: summ = balance
+        else: summ = int(split_text[2])
+    except:
+        return
+
+    summ2 = '{:,}'.format(summ).replace(',', '.')
+
+    try:
         summ = message.text.split()[1].replace('е', 'e')
         summ = int(float(summ))
     except:
