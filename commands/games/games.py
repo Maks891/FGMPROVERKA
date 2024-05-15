@@ -206,7 +206,7 @@ async def game_casino(message):
         split_text = message.text.split()
         if len(split_text) < 3:
             return await message.answer(f'{url}, вы не ввели ставку для игры {rloser}')
-        elif split_text[2] in ['все', 'всё']:
+        elif split_text[2].lower() in ['все', 'всё']:
             summ = balance
         else:
             summ = int(float(split_text[2].replace('е', 'e')))
@@ -233,6 +233,8 @@ async def game_casino(message):
         await message.answer(txt)
     else:
         await message.answer(f'{url}, ваша ставка не может быть меньше 10 {rloser}')
+
+
 
 async def game_trade(message):
     user_name = await getname(message)
