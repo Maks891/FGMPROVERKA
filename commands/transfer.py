@@ -114,7 +114,7 @@ async def limit_cmd(message):
     user_id = message.from_user.id
     user_name = await getidname(user_id)
     per = await getlimitdb(message)
-    perbtc = await getlimitdbtc(message)
+    perbtc = await getlimitbtcdb(message)
     url = await geturl(user_id, user_name)
     status = await getstatus(user_id)
     limit = await get_limit_cmd(status)
