@@ -78,6 +78,7 @@ async def bdat_cmd(message: types.Message):
     try:
         btc_amount = message.text.split()[1].replace('е', 'e')
         btc_amount = float(btc_amount)
+        btc_amount2 = '{:,}'.format(summ).replace(',', '.')
     except:
         await message.reply(f'{url}, вы не ввели количество биткоинов, которое хотите передать игроку {rloser}')
         return
