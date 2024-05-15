@@ -78,6 +78,13 @@ async def getperevod(perevod, user_id, reply_user_id):
     r_balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (reply_user_id,)).fetchone()[0]
     per = cursor.execute('SELECT per FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
 
+
+async def getperevodbtc(perevod, user_id, reply_user_id):
+    btc = cursor.execute('SELECT btc FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    r_btc = cursor.execute('SELECT btc FROM users WHERE user_id = ?', (reply_user_id,)).fetchone()[0]
+    per = cursor.execute('SELECT per FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+  
+  
     balance = int(Decimal(balance) - Decimal(perevod))
     r_balance = int(Decimal(r_balance) + Decimal(perevod))
     per = int(Decimal(per) + Decimal(perevod))
