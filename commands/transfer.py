@@ -20,6 +20,20 @@ async def get_limit_cmd(status):
     return limit
 
 
+async def get_limitbtc_cmd(status):
+    if status == 1:
+        limit = 30000
+    elif status == 2:
+        limit = 750000
+    elif status == 3:
+        limit = 1000000
+    elif status == 4:
+        limit = 30000000
+    else:
+        limit = 150000000
+    return limitbtc
+
+
 @antispam
 async def dat_cmd(message: types.Message):
     user_id = message.from_user.id
@@ -100,13 +114,22 @@ async def limit_cmd(message):
     user_id = message.from_user.id
     user_name = await getidname(user_id)
     per = await getlimitdb(message)
+    perbtc = await getlimitdbtc(message)
     url = await geturl(user_id, user_name)
     status = await getstatus(user_id)
     limit = await get_limit_cmd(status)
+    limitbtc = await get_limitbtc_cmd(status)
     ost = limit - per
+    op = limitbtc - per
     youlimit = '{:,}'.format(limit).replace(',', '.')
+    youlimitbtc = '{:,}'.format(limit).replace(',', '.')
     ost = '{:,}'.format(ost).replace(',', '.')
+    op = '{:,}'.format(op).replace(',', '.')
     per2 = '{:,}'.format(per).replace(',', '.')
+    perbtc2 = '{:,}'.format(per).replace(',', '.')
     await message.reply(f'''{url}, здесь ваш лимит на сегодня: {youlimit}$
 💫 Вы уже передали: {per2}$
-🚀 У вас осталось: {ost}$ для передачи!''', parse_mode='html')
+$
+💫 Вы уже передали: {perbtc2}B
+🚀 У вас осталось: {ost}$ для передачи!
+🚀 У вас осталось: {op}$ для передачи''', parse_mode='html')
