@@ -56,6 +56,70 @@ async def give_money(message):
         await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
     await new_log(f'#выдача\nПользователь {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_money')
 
+async def give_money(message):
+    user_id = message.from_user.id
+    user_id = message.reply_to_message.from_user.id
+    user_name = message.reply_to_message.from_user.full_name
+    balance = cursor.execute("SELECT balance from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    balance = int(balance[0])
+    bank = cursor.execute("SELECT bank from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    bank = int(bank[0])
+    depozit = cursor.execute("SELECT depozit from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    depozit = int(depozit[0])
+    btc = cursor.execute("SELECT btc from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    btc = int(btc[0])
+    rating = cursor.execute("SELECT rating from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    rating = int(rating[0])
+    status_reply = cursor.execute("SELECT status from users where user_id = ?",(message.reply_to_message.from_user.id,)).fetchone()
+    status_reply = str(status_reply[0])
+    status = cursor.execute("SELECT status from users where user_id = ?",(message.from_user.id,)).fetchone()
+    status = str(status[0])
+    name = message.from_user.get_mention(as_html=True)
+
+    if status_reply == '1':
+        status_reply2 = 'Игрок'
+    if status_reply == '2':
+        status_reply2 = 'Администратор'
+     if status_reply == '3':
+        status_reply2 = 'Platinum'
+    if status_reply == '4':
+        status_reply2 = 'Разработчик'
+
+    balance2 = '{:,}'.format(balance)
+    bank2 = '{:,}'.format(bank)
+    rating2 = '{:,}'.format(rating)
+    btc2 = '{:,}'.format(btc)
+    depozit2 = '{:,}'.format(depozit)
+    if user_status == '4':
+        await bot.send_message(message.chat.id, f'''
+{name}, информация о игроке:
+
+    👫Ник: {user_name}
+    🔎ID: {user_id}
+    💰Деньги: {balance2}$
+    🏛Банк: {bank2}$
+    👑Рейтинг: {rating2} 
+    🏪Депозит: {depozit2}
+    💽Биткоины: {btc2}
+    🧊Статус: {status_reply2}
+''', parse_mode='html')
+    if user_status == '3':
+        await bot.send_message(message.chat.id, f'''
+{name}, информация о игроке:
+
+    👫Ник: {user_name}
+    🔎ID: {user_id}
+    💰Деньги: {balance2}$
+    🏛Банк: {bank2}$
+    👑Рейтинг: {rating2} 
+    💽Биткоины: {btc2}
+    🧊Статус: {status_reply2}
+''', parse_mode='html')
+        return
+    else:
+        await bot.send_message(message.chat.id, f'{name}, Доступ к данной команде ограничен. Для покупки администратора обратитесь к создателю 👨‍🦰. Наш telegram канал @slivmens', parse_mode='html')
+
+
 
 async def give_bcoins(message):
     user_id = message.from_user.id
