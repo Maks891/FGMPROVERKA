@@ -76,15 +76,9 @@ async def info_cmd_s(message):
     status = str(status[0])
     name = message.from_user.get_mention(as_html=True)
 
-    if status_reply == '1':
-        status_reply2 = 'Игрок'
-    if status_reply == '2':
-        status_reply2 = 'Администратор'
-     if status_reply == '3':
-        status_reply2 = 'Platinum'
-    if status_reply == '4':
-        status_reply2 = 'Разработчик'
-
+    if user_id not in cfg.admin and status == 0:
+        return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"') 
+    try:
     balance2 = '{:,}'.format(balance)
     bank2 = '{:,}'.format(bank)
     rating2 = '{:,}'.format(rating)
