@@ -42,7 +42,7 @@ async def oplata_nalogs_ferma_db(id, ch):
 
 
 async def autoferma():
-    cursor.execute(f'UPDATE ferma SET balance = balance + {3000} WHERE nalogs < 5000000 AND cards = 0')
-    cursor.execute('UPDATE ferma SET balance = balance + ROUND(3000 * POWER(cards, 2.5)) WHERE nalogs < 5000000 AND cards > 0')
+    cursor.execute(f'UPDATE ferma SET balance = balance + {30000} WHERE nalogs < 5000000 AND cards = 0')
+    cursor.execute('UPDATE ferma SET balance = balance + ROUND(30000 * POWER(cards, 2.5)) WHERE nalogs < 5000000 AND cards > 0')
     cursor.execute('UPDATE ferma SET nalogs = nalogs + 200000 WHERE nalogs < 5000000')
     conn.commit()
