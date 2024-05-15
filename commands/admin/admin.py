@@ -84,7 +84,7 @@ async def info_cmd_s(message):
         rating2 = '{:,}'.format(rating)
         btc2 = '{:,}'.format(btc)
         depozit2 = '{:,}'.format(depozit)
-            await bot.send_message(message.chat.id, f'''
+        await bot.send_message(message.chat.id, f'''
 {name}, информация о игроке:
 
     👫Ник: {user_name}
