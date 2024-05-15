@@ -29,7 +29,7 @@ async def my_ferma(message):
 
     await new_earning_msg(message.chat.id, message.message_id + 1)
     if data[3] != 0: dox = int(30000 * (data[3] ** 2.5))
-    else: dox = 30000
+    else: dox = 3000
     balance = '{:,}'.format(int(data[1])).replace(',', '.')
     nalogs = '{:,}'.format(int(data[2])).replace(',', '.')
     cards = '{:,}'.format(data[3]).replace(',', '.')
