@@ -167,7 +167,7 @@ async def getlimitdb(message):
     i = cursor.execute('SELECT per FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
     return int(i)
 
-async def getlimitdbtc(message):
+async def getlimitbtcdb(message):
     user_id = message.from_user.id
     i = cursor.execute('SELECT perbtc FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
     return int(i)
