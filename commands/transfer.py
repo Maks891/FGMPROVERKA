@@ -126,7 +126,7 @@ async def limit_cmd(message):
     ost = '{:,}'.format(ost).replace(',', '.')
     op = '{:,}'.format(op).replace(',', '.')
     per2 = '{:,}'.format(per).replace(',', '.')
-    perbtc2 = '{:,}'.format(per).replace(',', '.')
+    perbtc2 = '{:,}'.format(perbtc).replace(',', '.')
     await message.reply(f'''{url}, здесь ваш лимит на сегодня: {youlimit}$
 💫 Вы уже передали: {per2}$
 $
