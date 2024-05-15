@@ -79,13 +79,12 @@ async def info_cmd_s(message):
     if user_id not in cfg.admin and status == 0:
         return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"') 
     try:
-    balance2 = '{:,}'.format(balance)
-    bank2 = '{:,}'.format(bank)
-    rating2 = '{:,}'.format(rating)
-    btc2 = '{:,}'.format(btc)
-    depozit2 = '{:,}'.format(depozit)
-    if user_status == '4':
-        await bot.send_message(message.chat.id, f'''
+        balance2 = '{:,}'.format(balance)
+        bank2 = '{:,}'.format(bank)
+        rating2 = '{:,}'.format(rating)
+        btc2 = '{:,}'.format(btc)
+        depozit2 = '{:,}'.format(depozit)
+            await bot.send_message(message.chat.id, f'''
 {name}, информация о игроке:
 
     👫Ник: {user_name}
@@ -97,21 +96,6 @@ async def info_cmd_s(message):
     💽Биткоины: {btc2}
     🧊Статус: {status_reply2}
 ''', parse_mode='html')
-    if user_status == '3':
-        await bot.send_message(message.chat.id, f'''
-{name}, информация о игроке:
-
-    👫Ник: {user_name}
-    🔎ID: {user_id}
-    💰Деньги: {balance2}$
-    🏛Банк: {bank2}$
-    👑Рейтинг: {rating2} 
-    💽Биткоины: {btc2}
-    🧊Статус: {status_reply2}
-''', parse_mode='html')
-        return
-    else:
-        await bot.send_message(message.chat.id, f'{name}, Доступ к данной команде ограничен. Для покупки администратора обратитесь к создателю 👨‍🦰. Наш telegram канал @slivmens', parse_mode='html')
 
 
 
