@@ -90,12 +90,11 @@ async def getperevod(perevod, user_id, reply_user_id):
 async def getperevodbtc(perevodbtc, user_id, reply_user_id):
     btc = cursor.execute('SELECT btc FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
     r_btc = cursor.execute('SELECT btc FROM users WHERE user_id = ?', (reply_user_id,)).fetchone()[0]
-    perbtc = cursor.execute('SELECT perbtc FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    
     
     btc = int(Decimal(btc) - Decimal(perevodbtc))
     r_btc = int(Decimal(r_btc) + Decimal(perevodbtc))
-    perbtc = int(Decimal(perbtc) + Decimal(perevodbtc))
-
+    
     cursor.execute(f'UPDATE users SET btc = ? WHERE user_id = ?', (str(btc), user_id))
     cursor.execute(f'UPDATE users SET btc = ? WHERE user_id = ?', (str(r_btc), reply_user_id))
     cursor.execute(f'UPDATE users SET perbtc = ? WHERE user_id = ?', (str(perbtc), user_id))
