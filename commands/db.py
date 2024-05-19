@@ -54,6 +54,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS property (user_id INTEGER, helicopt
 car INTEGER, yahta INTEGER, phone INTEGER, house INTEGER, plane INTEGER)''')
 
 
+
 async def reg_user(user_id):
     ex = cursor.execute('SELECT name FROM users WHERE user_id = ?', (user_id,)).fetchone()
     if not ex:
