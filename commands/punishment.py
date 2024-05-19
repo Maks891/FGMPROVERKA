@@ -1,7 +1,7 @@
 async def mute_cmd(message):
    name1 = message.from_user.get_mention(as_html=True)
-   user_name = cursor.execute("SELECT user_name from users where user_id = ?", (message.from_user.id,)).fetchone()
-   user_name = str(user_name[0])
+   name = cursor.execute("SELECT name from users where user_id = ?", (message.from_user.id,)).fetchone()
+   name = str(name[0])
    reply = message.from_user.id    
    if not message.reply_to_message:
       await message.reply("ℹ | Эта команда должна быть ответом на сообщение!")
