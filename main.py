@@ -178,13 +178,10 @@ async def buy_garden_s(message: types.Message):
 async def business_list_s(message: types.Message):
     await business_list(message)
 
-@dp.message_handler(lambda message: message.text in ['Мой ид', 'мой ид'])
-async def id_info_s(message: types.Message):
-     await id_info(message)
 
 @dp.message_handler(lambda message: message.text in ['Узнать ид', 'узнать ид', 'Ид', 'ид'])
-async def id_infoo_s(message: types.Message):
-     await id_infoo(message)
+async def id_info_s(message: types.Message):
+     await id_info(message)
 
 
 @dp.message_handler(lambda message: message.text in ['Мой бизнес', 'мой бизнес'])
