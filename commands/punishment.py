@@ -1,4 +1,3 @@
-@dp.message_handler(lambda t: t.text.startswith('мут'), is_chat_admin=True)
 async def mute_cmd(message):
    name1 = message.from_user.get_mention(as_html=True)
    user_name = cursor.execute("SELECT user_name from users where user_id = ?", (message.from_user.id,)).fetchone()
