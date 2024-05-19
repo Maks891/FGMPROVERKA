@@ -51,8 +51,11 @@ async def geturl(id, txt):
 
 
 async def id_info(message):
-    user_id = message.from_user.id
-    await message.reply(f"Ваш айди: {user_id}", parse_mode='html')
+    if message.from_user:
+        user_id = message.from_user.id
+        await message.reply(f"Ваш айди: {user_id}", parse_mode='html')
+    else:
+        await message.reply("Не удалось получить информацию об отправителе сообщения.")
 
 async def id_infoo(message):
 	user_id = message.reply_to_message.from_user.id
