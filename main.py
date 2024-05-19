@@ -5,6 +5,7 @@ from config import *
 from commands.main import *
 from commands.help import *
 from commands.balance import *
+from commands.punishment import *
 from commands.status.main import *
 from commands.rz import *
 from commands.transfer import *
@@ -301,6 +302,11 @@ async def inventary_cmd_s(message: types.Message):
 @dp.message_handler(lambda message: message.text in ['курс руды', 'Курс руды'])
 async def kursrud_cmd_s(message: types.Message):
     await kursrud_cmd(message)
+
+@dp.message_handler(lambda t: t.text.startswith('мут'), is_chat_admin=True)
+async def mute_cmd_s(message):
+    await mute_cmd(message)
+
 
 
 @dp.message_handler(lambda message: message.text.startswith("шар ") or message.text.startswith("Шар "))
