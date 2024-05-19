@@ -48,3 +48,15 @@ async def win_luser():
 async def geturl(id, txt):
     url = f'<a href="tg://user?id={id}">{txt}</a>'
     return url
+
+
+async def id_info(message):
+    user_id = message.from_user.id
+	await message.reply(f"Ваш айди: {user_id}", parse_mode='html')
+
+async def id_infoo(message):
+	user_id = message.reply_to_message.from_user.id
+	if message.reply_to_message:
+		await message.reply(f"Айди пользователя: {user_id}", parse_mode='html')	
+	if not message.reply_to_message:
+		await message.reply(f"Эта команда должна быть ответом на сообщение!", parse_mode='html')
