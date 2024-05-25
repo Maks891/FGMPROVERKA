@@ -57,7 +57,7 @@ cars = {
     24: ('Tesla Semi', 400, 1032, 5, 'https://te.legra.ph/file/cfb779a7de3fabbfb9335.jpg', 4430000000000),
     25: ('Venom GT', 427, 1400, 2.9, 'https://te.legra.ph/file/f3b393defa0382b1827f1.jpg', 6430000000000),
     26: ('Rolls-Royce', 300, 460, 4.6, 'https://te.legra.ph/file/0f8241795dd3b36ee53cf.jpg', 9430000000000),
-    27: ('Ccccc', 300, 460, 4.6, 'https://te.legra.ph/file/1b98d3e7a708d5c90976f.png', 9430000000000),
+    333: ('В разработке', 0, 0, 0, 'https://te.legra.ph/file/1b98d3e7a708d5c90976f.png', 1),
 }
 
 
