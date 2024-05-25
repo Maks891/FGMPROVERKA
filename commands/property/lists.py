@@ -54,10 +54,12 @@ cars = {
     21: ('Thrust SSC', 1227, 110000, 1.6, 'https://te.legra.ph/file/a2ef778d62c6c2223eca1.jpg', 900000000000),
     22: ('Ferrari LaFerrari', 350, 800, 2.9, 'https://te.legra.ph/file/4fa2b7cbbc238bf440c5a.jpg', 2100000000000),
     23: ('Koenigsegg Regear', 447, 1360, 2.7, 'https://te.legra.ph/file/95898fa3af8c80a77db20.jpg', 3100000000000),
-    24: ('Tesla Semi', 400, 1032, 5, 'https://te.legra.ph/file/cfb779a7de3fabbfb9335.jpg', 4430000000000),
-    25: ('Venom GT', 427, 1400, 2.9, 'https://te.legra.ph/file/f3b393defa0382b1827f1.jpg', 6430000000000),
-    26: ('Rolls-Royce', 300, 460, 4.6, 'https://te.legra.ph/file/0f8241795dd3b36ee53cf.jpg', 9430000000000),
-    333: ('В разработке', 0, 0, 0, 'https://te.legra.ph/file/1b98d3e7a708d5c90976f.png', 1),
+    24: ('Toyota Supra', 263, 105, 12.8, 'https://telegra.ph/file/f16822ca866ff0038ee24.png', 20000000000000),
+    25: ('Tesla Semi', 400, 1032, 5, 'https://te.legra.ph/file/cfb779a7de3fabbfb9335.jpg', 40043000000000),
+    26: ('Venom GT', 427, 1400, 2.9, 'https://te.legra.ph/file/f3b393defa0382b1827f1.jpg', 60430000000000),
+    27: ('Rolls-Royce', 300, 460, 4.6, 'https://te.legra.ph/file/0f8241795dd3b36ee53cf.jpg', 9430000000000),
+
+    333: ('В разработке', 0, 0, 0, 'https://te.legra.ph/file/1b98d3e7a708d5c90976f.png', 9999999999),
 }
 
 
