@@ -55,7 +55,7 @@ async def cars_list(message: types.Message):
 🚗 21. Thrust SSC - 900.000.000.000$
 🚗 22. Ferrari LaFerrari - 2.100.000.000.000$
 🚗 23. Koenigsegg Regear - 3.100.000.000.000$
-🚗 24. Rolls-Royce - 20.000.000.000.000$
+🚗 24. Toyota Supra - 20.000.000.000.000$
 🚗 25. Tesla Semi - 40.043.000.000.000$
 🚗 26. Venom GT - 60.430.000.000.000$
 🚗 27. Rolls-Royce - 9.430.000.000.000$
