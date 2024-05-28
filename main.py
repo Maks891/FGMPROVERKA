@@ -5,6 +5,7 @@ from config import *
 from commands.main import *
 from commands.help import *
 from commands.balance import *
+from commands.punishment import mute_cmd
 from commands.punishment import *
 from commands.status.main import *
 from commands.rz import *
