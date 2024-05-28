@@ -1,6 +1,7 @@
 # YT: userbotik
 import install
 from aiogram import types
+from aiogram import telegram
 from config import *
 from commands.main import *
 from commands.help import *
