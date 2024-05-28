@@ -1,3 +1,7 @@
+from datetime import datetime, timedelta
+from telegram import types, Message
+import asyncio
+
 async def mute_cmd(message):
    name1 = message.from_user.get_mention(as_html=True)
    name = cursor.execute("SELECT name from users where user_id = ?", (message.from_user.id,)).fetchone()
