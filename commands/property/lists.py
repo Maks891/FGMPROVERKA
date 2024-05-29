@@ -42,7 +42,7 @@ cars = {
     9: ('Багги', 95, 50, 3.4, 'https://te.legra.ph/file/09bed8298f05b9314ee41.jpg', 600000000),
     10: ('Вездеход', 40, 260, 30.2, 'https://te.legra.ph/file/9409bf7b52297de89b711.jpg', 900000000),
     11: ('Лада Xray', 175, 106, 11.5, 'https://te.legra.ph/file/f83a6249fb58511570697.jpg', 1400000000),
-    12: ('Lada Granta 2018', 171, 87, 11.9, 'https://te.legra.ph/file/f83a6249fb58511570697.jpg', 1500000000),
+    12: ('Lada Granta 2018', 171, 87, 11.9, 'https://telegra.ph/file/4f1bebb53243413f7b154.jpg', 1500000000),
     13: ('Mitsubishi lancer 9', 350, 250, 15.0, 'https://te.legra.ph/file/1b98d3e7a708d5c90976f.png', 1900000000),
     14: ('Audi Q7', 250, 450, 6.6, 'https://te.legra.ph/file/b5d9b0728014bba97e4b2.jpg', 2500000000),
     15: ('BMW X6', 250, 626, 4.2, 'https://te.legra.ph/file/7de01330b5001f621a4ae.jpg', 6000000000),
