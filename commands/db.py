@@ -56,7 +56,6 @@ car INTEGER, yahta INTEGER, phone INTEGER, house INTEGER, plane INTEGER, pet INT
 
 
 async def reg_user(user_id):
-    add_pet_column()
     ex = cursor.execute('SELECT name FROM users WHERE user_id = ?', (user_id,)).fetchone()
     if not ex:
         dt = int(datetime.now().timestamp())
@@ -73,11 +72,6 @@ async def reg_user(user_id):
                        'VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (user_id, 0, 0, 0, 0, 0, 0))
 
         conn.commit()
-
-def add_pet_column():
-    cursor.execute('''ALTER TABLE property DROP COLUMN IF EXISTS pet''')
-    cursor.execute('''ALTER TABLE property ADD COLUMN pet INTEGER''')
-    conn.commit()
 
 async def getperevod(perevod, user_id, reply_user_id):
     balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
