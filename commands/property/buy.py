@@ -7,6 +7,38 @@ from assets.antispam import antispam
 
 
 @antispam
+async def buy_pet(message: types.Message):
+    user_id = message.from_user.id
+    name = await url_name(user_id)
+    balance = await get_balance(user_id)
+    rwin, rloser = await win_luser()
+    data = await db.get_property(user_id)
+
+    if data[1] != 0:
+        await message.answer(f'{name}, у вас уже есть питомец {rloser}')
+        return
+
+    try:
+        num = int(message.text.split()[2])
+    except:
+        await message.answer(f'{name}, вы не ввели число имущества или привелегии которое хотите купить {rloser}')
+        return
+
+    hdata = pet.get(num, 'no')
+    if hdata == 'no':
+        await message.answer(f'{name}, вы не ввели число имущества или привелегии которое хотите купить {rloser}')
+        return
+
+    if balance < hdata[4]:
+        await message.answer(f'{name}, у вас недостаточно денег для покупки имущества {rloser}')
+        return
+
+    await message.answer(f'{name}, вы успешно купили питомца "{hdata[0]}" 🎉')
+    await db.buy_property(user_id, num, 'pet', hdata[4])
+
+
+
+@antispam
 async def buy_helicopter(message: types.Message):
     user_id = message.from_user.id
     name = await url_name(user_id)
@@ -193,6 +225,24 @@ async def buy_plane(message: types.Message):
 
 
 @antispam
+async def sell_pet(message: types.Message):
+    user_id = message.from_user.id
+    name = await url_name(user_id)
+    rwin, rloser = await win_luser()
+    data = await db.get_property(user_id)
+
+    if data[1] == 0:
+        await message.answer(f'{name}, у вас нет данного имущества {rloser}')
+        return
+
+    hdata = pet.get(data[1])
+    summ = int(hdata[4] * 0.75)
+    summ2 = '{:,}'.format(summ).replace(',', '.')
+
+    await message.answer(f'{name}, вы успешно продали питомца за {summ2}$ 🎉')
+    await db.sell_property(user_id, 'pet', summ)
+
+@antispam
 async def sell_helicopter(message: types.Message):
     user_id = message.from_user.id
     name = await url_name(user_id)
@@ -308,12 +358,14 @@ async def sell_plane(message: types.Message):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(buy_helicopter, lambda message: message.text.lower().startswith(('купить вертолет', 'купить вертолёт')))
+    dp.register_message_handler(buy_pet, lambda message: message.text.lower().startswith(('купить пи', 'купить пи')))
     dp.register_message_handler(buy_phone, lambda message: message.text.lower().startswith('купить телефон'))
     dp.register_message_handler(buy_car, lambda message: message.text.lower().startswith('купить машину'))
     dp.register_message_handler(buy_house, lambda message: message.text.lower().startswith('купить дом'))
     dp.register_message_handler(buy_yahta, lambda message: message.text.lower().startswith('купить яхту'))
     dp.register_message_handler(buy_plane, lambda message: message.text.lower().startswith(('купить самолет', 'купить самолёт')))
 
+    dp.register_message_handler(sell_pet, lambda message: message.text.lower().startswith(('продать пи', 'продать пи')))
     dp.register_message_handler(sell_helicopter, lambda message: message.text.lower().startswith(('продать вертолет', 'продать вертолёт')))
     dp.register_message_handler(sell_phone, lambda message: message.text.lower().startswith('продать телефон'))
     dp.register_message_handler(sell_car, lambda message: message.text.lower().startswith('продать машину'))
