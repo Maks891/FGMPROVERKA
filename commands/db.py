@@ -68,8 +68,8 @@ async def reg_user(user_id):
                        'plasma, nickel, titanium, cobalt, ectoplasm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                        (user_id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
 
-        cursor.execute('INSERT INTO property (user_id, helicopter, car, yahta, phone, house, plane) '
-                       'VALUES (?, ?, ?, ?, ?, ?, ?)', (user_id, 0, 0, 0, 0, 0, 0))
+        cursor.execute('INSERT INTO property (user_id, helicopter, car, yahta, phone, house, plane, pet) '
+                       'VALUES (?, ?, ?, ?, ?, ?, ?)', (user_id, 0, 0, 0, 0, 0, 0, 0))
 
         conn.commit()
 
