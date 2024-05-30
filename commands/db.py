@@ -8,6 +8,14 @@ from decimal import Decimal
 conn = sqlite3.connect('users.db')
 cursor = conn.cursor()
 
+update_query = "UPDATE property SET pet = ?"
+cursor.execute(update_query, ('some_value',))
+
+# Фиксация изменений и закрытие соединения
+conn.commit()
+cursor.close()
+conn.close()
+
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER, name TEXT, balance TEXT, btc INTEGER, 
 bank INTEGER, depozit INTEGER, timedepozit NUMERIC, exp INTEGER, energy INTEGER, case1 INTEGER, case2 INTEGER, 
