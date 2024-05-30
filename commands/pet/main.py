@@ -37,7 +37,7 @@ async def my_pet(message: types.Message):
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(pet_list, lambda message: message.text.lower().startswith(('питы', 'питы')))
+    dp.register_message_handler(pet_list, lambda message: message.text.lower().startswith(('питы', 'пит')))
     
     dp.register_message_handler(my_pet, lambda message: message.text.lower().startswith(('мой пит', 'мой пит')))
     
