@@ -12,9 +12,6 @@ update_query = "UPDATE property SET pet = ?"
 cursor.execute(update_query, ('some_value',))
 
 # Фиксация изменений и закрытие соединения
-conn.commit()
-cursor.close()
-conn.close()
 
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER, name TEXT, balance TEXT, btc INTEGER, 
