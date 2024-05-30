@@ -51,7 +51,7 @@ conn.commit()
 
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS property (user_id INTEGER, helicopter INTEGER, 
-car INTEGER, yahta INTEGER, phone INTEGER, house INTEGER, plane INTEGER)''')
+car INTEGER, yahta INTEGER, phone INTEGER, house INTEGER, plane INTEGER, pet INTEGER)''')
 
 
 
