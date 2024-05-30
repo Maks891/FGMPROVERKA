@@ -120,7 +120,7 @@ planes = {
     16: ('B-2 Spirit Stealth Bomber', 1010, 2400, 'https://te.legra.ph/file/a4ecf2dc5f1b530b9f96a.jpg', 13500000000000),
 }
 
-pet = {
+pets = {
     1: ('Бомж', 5, 100, 'https://telegra.ph/file/6c235b156033d19422bc9.jpg', 1000000),
     2: ('Ребёнок', 11, 150, 'https://telegra.ph/file/0aac7c5d9a5d67debd132.jpg', 1000000),
     3: ('Кот', 20, 165, 'https://telegra.ph/file/a483f2209db8b787f33f6.jpg', 1000000),
