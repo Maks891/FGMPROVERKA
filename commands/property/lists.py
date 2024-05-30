@@ -119,3 +119,18 @@ planes = {
     15: ('Airbus 380 Custom', 900, 4000, 'https://te.legra.ph/file/698571677db7c6a02fee2.jpg', 6000000000000),
     16: ('B-2 Spirit Stealth Bomber', 1010, 2400, 'https://te.legra.ph/file/a4ecf2dc5f1b530b9f96a.jpg', 13500000000000),
 }
+
+pet = {
+    1: ('Бомж', 5, 100, 'https://telegra.ph/file/6c235b156033d19422bc9.jpg', 1000000),
+    2: ('Ребёнок', 11, 150, 'https://telegra.ph/file/0aac7c5d9a5d67debd132.jpg', 10000000),
+    3: ('Кот', 20, 165, 'https://telegra.ph/file/a483f2209db8b787f33f6.jpg', 30000000),
+    4: ('Хомяк', 38, 1200, 'https://telegra.ph/file/9491b5aaaae89ec8380f7.jpg', 100000000),
+    5: ('Собака', 40, 300, 'https://telegra.ph/file/7cd5d9b94e40ace94f840.jpg', 500000000),
+    6: ('Собака робот', 45, 2600, 'https://telegra.ph/file/e81f9d6127c0d3af33872.jpg', 800000000),
+    7: ('Попугай', 57, 400, 'https://telegra.ph/file/c9354e4359389007b8d09.jpg', 5000000000),
+    8: ('Енот', 60, 720, 'https://telegra.ph/file/19d3deae6d168e7bff50f.jpg', 15000000000),
+    9: ('Шиншилла', 64, 3840, 'https://telegra.ph/file/c8391c2ca3a07863cc584.jpg', 40000000000),
+    10: ('Белка-летяга', 50, 33800, 'https://telegra.ph/file/f5cc8e930ed388e72cc46.jpg', 90000000000),
+    11: ('Аниме-девочка', 50, 33800, 'https://telegra.ph/file/c95f00d347faf94649183.jpg', 200000000000),
+    
+}
