@@ -24,7 +24,7 @@ async def buy_pet(message: types.Message):
         await message.answer(f'{name}, вы не ввели число имущества или привелегии которое хотите купить {rloser}')
         return
 
-    hdata = pet.get(num, 'no')
+    hdata = pets.get(num, 'no')
     if hdata == 'no':
         await message.answer(f'{name}, вы не ввели число имущества или привелегии которое хотите купить {rloser}')
         return
