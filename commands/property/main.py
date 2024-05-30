@@ -154,7 +154,7 @@ async def plane_list(message: types.Message):
 🛒 Для покупки самолёта введите "Купить самолёт [номер]"''')
 
 @antispam
-async def pet_list(message: types.Message):
+async def pets_list(message: types.Message):
     name = await url_name(message.from_user.id)
     await message.answer(f'''{name}, доступные питомцы:
 1. Бомж - 1000000
@@ -287,7 +287,7 @@ async def my_plane(message: types.Message):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(helicopters_list, lambda message: message.text.lower().startswith(('вертолеты', 'вертолёты')))
-    dp.register_message_handler(pet_list, lambda message: message.text.lower().startswith(('пит', 'питы')))
+    dp.register_message_handler(pets_list, lambda message: message.text.lower().startswith(('пит', 'питы')))
     dp.register_message_handler(cars_list, lambda message: message.text.lower().startswith('машины'))
     dp.register_message_handler(yahta_list, lambda message: message.text.lower().startswith('дома'))
     dp.register_message_handler(phone_list, lambda message: message.text.lower().startswith('телефоны'))
