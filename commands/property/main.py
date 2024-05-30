@@ -153,6 +153,30 @@ async def plane_list(message: types.Message):
 
 🛒 Для покупки самолёта введите "Купить самолёт [номер]"''')
 
+@antispam
+async def pet_list(message: types.Message):
+    name = await url_name(message.from_user.id)
+    await message.answer(f'''{name}, доступные самолеты:
+✈️ 1. Параплан - 100.000.000$
+✈️ 2. АН-2 - 350.000.000$
+✈️ 3. Cessna-172E - 700.000.000$
+✈️ 4. BRM NG-5 - 1.000.000.000$
+✈️ 5. Cessna T210 - 1.400.000.000$
+✈️ 6. Beechcraft 1900D - 2.600.000.000$
+✈️ 7. Cessna 550 - 5.500.000.000$
+✈️ 8. Hawker 4000 - 8.800.000.000$
+✈️ 9. Learjet 31 - 450.000.000.000$
+✈️ 10. Airbus A318 - 800.000.000.000$
+✈️ 11. F-35A - 1.600.000.000.000$
+✈️ 12. Boeing 747-430 - 2.250.000.000.000$
+✈️ 13. C-17A Globemaster III - 3.500.000.000.000$
+✈️ 14. F-22 Raptor - 4.000.000.000.000$
+✈️ 15. Airbus 380 Custom - 6.000.000.000.000$
+✈️ 16. B-2 Spirit Stealth Bomber - 13.500.000.000.000$
+
+🛒 Для покупки самолёта введите "Купить самолёт [номер]"''')
+
+
 
 @antispam
 async def my_helicopter(message: types.Message):
@@ -255,6 +279,7 @@ async def my_plane(message: types.Message):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(helicopters_list, lambda message: message.text.lower().startswith(('вертолеты', 'вертолёты')))
+    dp.register_message_handler(pet_list, lambda message: message.text.lower().startswith(('пит', 'питы')))
     dp.register_message_handler(cars_list, lambda message: message.text.lower().startswith('машины'))
     dp.register_message_handler(yahta_list, lambda message: message.text.lower().startswith('дома'))
     dp.register_message_handler(phone_list, lambda message: message.text.lower().startswith('телефоны'))
