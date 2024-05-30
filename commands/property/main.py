@@ -244,7 +244,7 @@ async def my_pet(message: types.Message):
         await message.answer(f'{name}, к сожалению у вас нет своего питомца {rloser}')
         return
 
-    hdata = pet.get(data[5])
+    hdata = pets.get(data[5])
     await bot.send_photo(chat_id=message.chat.id, photo=hdata[1], caption=f'{name}, ваш питомец "{hdata[0]}"')
 
 
