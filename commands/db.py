@@ -73,6 +73,11 @@ async def reg_user(user_id):
 
         conn.commit()
 
+def add_pet_column():
+    cursor.execute('''ALTER TABLE property ADD COLUMN pet INTEGER''')
+    conn.commit()
+
+add_pet_column()
 
 async def getperevod(perevod, user_id, reply_user_id):
     balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
