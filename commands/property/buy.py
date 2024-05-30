@@ -357,8 +357,8 @@ async def sell_plane(message: types.Message):
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(buy_helicopter, lambda message: message.text.lower().startswith(('купить вертолет', 'купить вертолёт')))
     dp.register_message_handler(buy_pet, lambda message: message.text.lower().startswith(('купить пи', 'купить пи')))
+    dp.register_message_handler(buy_helicopter, lambda message: message.text.lower().startswith(('купить вертолет', 'купить вертолёт')))
     dp.register_message_handler(buy_phone, lambda message: message.text.lower().startswith('купить телефон'))
     dp.register_message_handler(buy_car, lambda message: message.text.lower().startswith('купить машину'))
     dp.register_message_handler(buy_house, lambda message: message.text.lower().startswith('купить дом'))
