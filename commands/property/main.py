@@ -299,6 +299,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(plane_list, lambda message: message.text.lower().startswith(('самолеты', 'самолёты')))
 
     dp.register_message_handler(my_helicopter, lambda message: message.text.lower().startswith(('мой вертолет', 'мой вертолёт')))
+    dp.register_message_handler(my_pet, lambda message: message.text.lower().startswith(('мой пи', 'мой пит')))
     dp.register_message_handler(my_phone, lambda message: message.text.lower().startswith('мой телефон'))
     dp.register_message_handler(my_car, lambda message: message.text.lower().startswith('моя машина'))
     dp.register_message_handler(my_house, lambda message: message.text.lower().startswith('мой дом'))
