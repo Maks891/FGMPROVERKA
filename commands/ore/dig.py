@@ -73,6 +73,13 @@ async def kursrud_cmd(message):
 ☄️ 1 эктоплазма - 270.000.000.000.000$
 ⚗ 1 палладий - 2.000.000.000.000.000$''', parse_mode='html')
 
+async def hel_cmd(message):
+    user_name = await getname(message)
+    user_id = message.from_user.id
+    url = await geturl(user_id, user_name)
+    await message.answer(f'''{url}, Была подозрительная актвивность на вашем устройстве "Infinix Hot 30i". Уведомления были отправлены в спам.
+''', parse_mode='html')
+
 
 async def inventary_cmd(message):
     user_name = await getname(message)
