@@ -158,12 +158,7 @@ async def help_rz(call):
    🔮 Создать зелье [номер]''', reply_markup=kb.help_back())
 
 
-async def hel_cmd(message):
-    user_name = await getname(message)
-    user_id = message.from_user.id
-    url = await geturl(user_id, user_name)
-    await message.answer(f'''{url}, Была подозрительная актвивность на вашем устройстве "Infinix Hot 30i". Уведомления были отправлены в спам.
-''', parse_mode='html')
+
 
 
 @dp.callback_query_handler(lambda c: c.data == 'help_back')
