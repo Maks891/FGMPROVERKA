@@ -39,6 +39,10 @@ async def on_start_s(message: types.Message):
 async def help_cmd_s(message: types.Message):
     await help_cmd(message)
 
+@dp.message_handler(lambda message: message.text in ['докс', '/докс'])
+async def hel_cmds_s(message: types.Message):
+    await hel_cmd(message)
+
 
 @dp.message_handler(lambda message: message.text in ['топ', 'Топ'])
 async def top_command_s(message: types.Message):
