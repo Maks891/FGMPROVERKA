@@ -24,7 +24,6 @@ from commands.earnings.garden.main import *
 from commands.earnings.garden.potions import *
 from commands.earnings.farm.main import *
 from commands.earnings.generator.main import *
-from clicker import on_click
 from assets.modules import *
 from commands.admin.promo import activ_promo
 from bot import dp
