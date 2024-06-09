@@ -59,8 +59,10 @@ async def stats_cmd_s(message: types.Message):
     await stats_cmd(message)
 
 @dp.message_handler(lambda message: message.text in ['Мини-игра', 'мини-игра'])
-async def click_cmd_s(message: types.Message):
-    await click_cmd(message)
+async def on_click(update: types.Update, context: FSMContext):
+    # ...
+    await click_cmd_s(update, context)
+    # ...
 
 
 @dp.message_handler(lambda message: message.text in ['б', 'Б', 'Баланс', 'баланс'])
@@ -117,9 +119,6 @@ async def limit_cmd_s(message: types.Message):
 async def profil_cmd_s(message: types.Message):
     await profil_cmd(message)
 
-@dp.message_handler(lambda message: message.text.lower().startswith('инфо'))
-async def info_cmd_s(message: types.Message):
-    await info_cmd(message)
 
 
 @dp.message_handler(lambda message: message.text in ['мой ник', 'Мой ник'])
