@@ -3,13 +3,17 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 
+# Определение состояний игры
+class ClickerGame(StatesGroup):
+    waiting_for_click = State()
+
 # Количество кликов для улучшения уровня
 LEVEL_UP_CLICKS = 10
 
 # Счетчик кликов и уровень игрока
 player_data = {}
 
-async def click_cmd(message: types.Message):
+async def start_game(message: types.Message):
     # Инициализация данных игрока, если они еще не существуют
     if message.from_user.id not in player_data:
         player_data[message.from_user.id] = {'clicks': 0, 'level': 1}
@@ -40,9 +44,8 @@ async def reset_game(message: types.Message):
     await message.answer("Игра сброшена. Начни заново!")
 
 # Определение клавиатуры с кнопкой для клика
-click_button = InlineKeyboardButton("Кликнуть", callback_data="click")
-click_button2 = InlineKeyboardButton("Мой уровень", callback_data="level")
-start_keyboard = InlineKeyboardMarkup().add(click_button, click_button2)
+click_button = types.InlineKeyboardButton("Кликнуть", callback_data="click")
+start_keyboard = types.InlineKeyboardMarkup().add(click_button)
 
 # Обработчики команд
 dp.register_message_handler(start_game, commands=['start'])
