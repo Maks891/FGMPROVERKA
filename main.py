@@ -58,6 +58,10 @@ async def kazna_cmd_s(message: types.Message):
 async def stats_cmd_s(message: types.Message):
     await stats_cmd(message)
 
+@dp.message_handler(lambda message: message.text in ['Мини-игра', 'мини-игра'])
+async def click_cmd_s(message: types.Message):
+    await click_cmd(message)
+
 
 @dp.message_handler(lambda message: message.text in ['б', 'Б', 'Баланс', 'баланс'])
 async def balance_cmd_s(message: types.Message):
