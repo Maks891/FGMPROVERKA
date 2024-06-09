@@ -62,9 +62,8 @@ async def stats_cmd_s(message: types.Message):
     await stats_cmd(message)
 
 @dp.message_handler(lambda message: message.text in ['Мини-игра', 'мини-игра'])
-async def on_click(update: types.Update, context: FSMContext):
-    await click_cmd(update, context)
-
+async def click_cmd_s(message: types.Message):
+    await click_cmd(message)
 
 
 @dp.message_handler(lambda message: message.text in ['б', 'Б', 'Баланс', 'баланс'])
