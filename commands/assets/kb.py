@@ -60,6 +60,12 @@ buttons = [
 help_bsKB.add(buttons[0], buttons[1])
 help_bsKB.add(buttons[2], buttons[3])
 
+click_kb = inlineKeyboardMarkup()
+buttons = [
+    [types.KeyboardButton(text="Клик")],
+    [types.KeyboardButton(text="Скрыть клавиатуру")]
+]
+Keyboard = types.ReplyKeyboardMarkup(Keyboard=buttons)
 
 helpGarden_kb = InlineKeyboardMarkup()
 buttons = [
