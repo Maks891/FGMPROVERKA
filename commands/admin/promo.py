@@ -35,7 +35,7 @@ async def promo_menu(message: types.message):
 
 async def new_promo(message, state: FSMContext, type='name'):
     user_id = message.from_user.id
-    if user_id not in cfg.admin:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     if message.text == 'Отмена':
@@ -95,7 +95,7 @@ async def new_promo(message, state: FSMContext, type='name'):
 
 async def dell_promo(message, state: FSMContext, type='name'):
     user_id = message.from_user.id
-    if user_id not in cfg.admin:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     if message.text == 'Отмена':
