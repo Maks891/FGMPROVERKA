@@ -170,7 +170,7 @@ def sizeof_fmt(num):
 
 async def RAM_control(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in 6888643375:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     keyboard = types.InlineKeyboardMarkup()
