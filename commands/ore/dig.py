@@ -174,7 +174,8 @@ async def digmine(message):
         'никель': ('nickel', 1, 500, 950000),
         'титан': ('titanium', 1, 2300, 5000000),
         'кобальт': ('cobalt', 1, 3600, 20000000),
-        'эктоплазму': ('ectoplasm', 1, 7200, 10000000000)
+        'эктоплазму': ('ectoplasm', 1, 7200, 10000000000),
+        'палладий': ('palladium', 1, 7200, 10000000000)
     }
 
     if ruda in ruda_data:
@@ -199,7 +200,7 @@ async def sellruda_cmd(message):
     url = await url_name(user_id)
     txt = message.text.split()
     rwin, rloser = await win_luser()
-    iron, gold, diamond, amestit, aquamarine, emeralds, matter, plasma, nickel, titanium, cobalt, ectoplasm, _, palladium = await getmine(message)
+    iron, gold, diamond, amestit, aquamarine, emeralds, matter, plasma, nickel, titanium, cobalt, ectoplasm, palladium = await getmine(message)
 
     if len(txt) < 2:
         return
