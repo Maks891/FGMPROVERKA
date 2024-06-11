@@ -1,7 +1,7 @@
 from commands.db import reg_user, get_name
 from commands.assets import kb
 import random
-import config as cfg
+import config_ex as cfg
 from assets.antispam import antispam
 
 
