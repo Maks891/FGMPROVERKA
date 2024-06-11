@@ -10,23 +10,23 @@ async def on_start(message):
     sticker_id = 'CAACAgQAAxkBAAEKs6JlSQUtGTtSzXGVcJGBe0PwnWkI9QACRwkAAm0NeFIe5FE9nk15XTME'
     await message.answer_sticker(sticker=sticker_id)
 
-    await message.answer(f'''🤖 Добро пожаловать на борт, Кто-то! Меня зовут BFG, твой верный игровой бот.
+    await message.answer(f'''🤖 Добро пожаловать на борт, Кто-то! Меня зовут FGM, твой верный игровой бот.
 
 🎮 У меня есть множество интересных команд и игр, чтобы скрасить твоё время, будь ты один или в компании друзей! (Кстати, вместе всегда веселее) 💙
 🔍 Познакомиться со всеми моими возможностями ты можешь, введя команду «помощь».
 
-<a href="{cfg.chanell}">🔈 Наш канал</a>
-<a href="{cfg.chat}">💬 Наш чат</a>''', disable_web_page_preview=True, reply_markup=kb.start())
+<a href="https://t.me/FGMINFO">🔈 Наш канал</a>
+<a href="https://t.me/FGMOFF">💬 Наш чат</a>''', disable_web_page_preview=True, reply_markup=kb.start())
 
     await message.answer(f'''🚀 Не уверен, с чего начать своё приключение?
-Присоединяйся к нашему официальному чату {cfg.bot_name}: {cfg.chat}''', disable_web_page_preview=True)
+Присоединяйся к нашему официальному чату FGM: https://t.me/FGMOFF''', disable_web_page_preview=True)
 
 
 async def chat_list(message):
     await message.answer(f'''💭 Официальная беседа бота:
-{cfg.chat}
+https://t.me/FGMOFF
 💭 Официальный канал разработки:
-{cfg.chanell}
+https://t.me/FGMINFO
 🏆 Официальный чат с розыгрышами:
 ...''', disable_web_page_preview=True)
 
