@@ -91,7 +91,7 @@ async def donat_list(message):
 🔝 Покупка: Купить лимит 4
 
 💰Ваш баланс: {ecoins} B-Coin
-📲 Пополнить баланс: <a href="t.me/{adm_us}">{cfg.admin_username}</a>''', disable_web_page_preview=True)
+📲 Пополнить баланс:@Geormor''', disable_web_page_preview=True)
 
 
 async def my_status(message):
