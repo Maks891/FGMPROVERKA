@@ -23,7 +23,7 @@ class new_ads_state(StatesGroup):
 async def give_money(message):
     user_id = message.from_user.id
     status = await getstatus(user_id)
-    if user_id not in 6888643375, 1688468160 and status == 0:
+    if user_id not in [6888643375, 1688468160] and status == 0:
         return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"')
 
     user_name = await get_name(user_id)
@@ -45,7 +45,7 @@ async def give_money(message):
     except:
         return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
 
-    if user_id in 6888643375, 1688468160:
+    if user_id in [6888643375, 1688468160]:
         await give_money_db(user_id, r_user_id, summ, 'rab')
         await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
     else:
@@ -59,7 +59,7 @@ async def give_money(message):
 
 async def give_bcoins(message):
     user_id = message.from_user.id
-    if user_id not in 6888643375, 1688468160:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     user_name = await get_name(user_id)
@@ -88,7 +88,7 @@ async def give_bcoins(message):
 
 async def new_ads(message, state: FSMContext, type=0):
     user_id = message.from_user.id
-    if user_id not in 6888643375, 1688468160:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     if type == 0:
@@ -119,7 +119,7 @@ async def new_ads(message, state: FSMContext, type=0):
 
 async def unloading(message):
     user_id = message.from_user.id
-    if user_id not in 6888643375, 1688468160:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     if message.chat.type != 'private':
@@ -132,7 +132,7 @@ async def unloading(message):
 
 async def admin_menu(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in 6888643375, 1688468160:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     keyboard = types.ReplyKeyboardMarkup(
@@ -150,7 +150,7 @@ async def admin_menu(message: types.Message):
 async def control(message: types.Message):
     print(546546)
     user_id = message.from_user.id
-    if user_id not in 6888643375, 1688468160:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -170,7 +170,7 @@ def sizeof_fmt(num):
 
 async def RAM_control(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in cfg.admin:
+    if user_id not in 6888643375:
         return
 
     keyboard = types.InlineKeyboardMarkup()
@@ -190,7 +190,7 @@ async def RAM_control(message: types.Message):
 
 async def RAM_clear(call: types.CallbackQuery):
     user_id = call.from_user.id
-    if user_id not in cfg.admin:
+    if user_id not in [6888643375, 1688468160]:
         return
 
     global earning_msg, help_msg, bonus_time, kazna_time
