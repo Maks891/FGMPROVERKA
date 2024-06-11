@@ -1,6 +1,6 @@
 # YT: userbotik
 import install
-from config import *
+from config_ex import *
 from commands.main import *
 from commands.help import *
 from commands.rz import *
