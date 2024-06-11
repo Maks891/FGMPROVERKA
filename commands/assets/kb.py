@@ -114,6 +114,7 @@ def profil(uid):
     keyboards = InlineKeyboardMarkup(row_width=1)
     keyboards.add(InlineKeyboardButton("🏠 Имущество", callback_data=f"profil-property|{uid}"))
     keyboards.add(InlineKeyboardButton("🏭 Бизнесы", callback_data=f"profil-busines|{uid}"))
+    keyboards.add(InlineKeyboardButton("Фракция", callback_data=f"profil-fraction|{uid}"))
 
     return keyboards
 
