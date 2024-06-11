@@ -200,7 +200,7 @@ async def sellruda_cmd(message):
     url = await url_name(user_id)
     txt = message.text.split()
     rwin, rloser = await win_luser()
-    iron, gold, diamond, amestit, aquamarine, emeralds, matter, plasma, nickel, titanium, cobalt, ectoplasm, palladium = await getmine(message)
+    iron, gold, diamond, amestit, aquamarine, emeralds, matter, plasma, nickel, titanium, cobalt, ectoplasm, _, palladium = await getmine(message)
 
     if len(txt) < 2:
         return
