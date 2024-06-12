@@ -263,7 +263,7 @@ async def mpadmin(message: types.Message):
     await message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
 
 async def mppravila(message: types.Message):
-    user_id = call.from_user.id
+    user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
 
