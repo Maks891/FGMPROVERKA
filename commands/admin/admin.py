@@ -260,6 +260,8 @@ async def mp(call: types.CallbackQuery):
     keyboard.add(types.KeyboardButton("🛡 Пользователи"))
     keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
 
+    await message.answer('<b>🕹️ Меню управления:</b>', reply_markup=keyboard)
+
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
