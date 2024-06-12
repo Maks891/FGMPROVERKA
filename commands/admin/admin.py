@@ -85,7 +85,9 @@ async def give_bcoins(message):
     await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
 
-async def obnyl_cmd(message):
+@dp.message_handler(lambda message: message.text in ['обнулить', 'Обнулить'])
+async def obnyl_cmd_s(message: types.Message):
+    await obnyl_cmd(message)
     user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
