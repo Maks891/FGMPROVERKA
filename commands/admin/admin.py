@@ -280,10 +280,9 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
-    dp.register_callback_query_handler(mpadmin, text="🎪 Мероприятия")
+    dp.register_message_handler(mpadmin, lambda message: message.text == '🎪 Мероприятия')
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
-    dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
-    dp.register_callback_query_handler(mppravila, text="mp_rules")  # Обработка нажатия на кнопку "Правила"
+    dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ') 
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
