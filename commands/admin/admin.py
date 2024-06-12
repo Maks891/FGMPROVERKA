@@ -102,6 +102,7 @@ async def obnyl_cmd(message: types.Message):
 
     
     await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
+    await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил баланс пользователю {r_user_name} ({r_user_id})', 'issuance_obnyl')
     cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
     cursor.execute(f'UPDATE users SET balance = {0} WHERE user_id = "{r_user_id}"')
     cursor.execute(f'UPDATE users SET btc = {0} WHERE user_id = "{r_user_id}"')
