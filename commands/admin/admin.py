@@ -251,7 +251,7 @@ async def RAM_clear(call: types.CallbackQuery):
 
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='🗑 Очищено!')
 
-async def mpadmin(call: types.CallbackQuery):
+async def mpadmin(message: types.Message):
     user_id = call.from_user.id  # узнаем id пользователя
     if user_id not in [6888643375, 1688468160]: # проверяем является ли игрок администратором
         return
