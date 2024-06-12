@@ -32,13 +32,13 @@ async def promo_start(message: types.Message):
     if result:
         await message.reply(f'😞 <b>{username}</b>, вы уже активировали промокод.', parse_mode='html')
     else:
-        cursor.execute("UPDATE users SET ecoins = ecoins + 1600 WHERE user_id = ?", (user_id,))
+        cursor.execute("UPDATE users SET ecoins = ecoins + 250 WHERE user_id = ?", (user_id,))
         conn.commit()
 
         cursor2.execute('INSERT INTO promo (id) VALUES (?)', (user_id,))
         conn2.commit()
 
-        await message.reply(f'🎁 <b>{username}</b>, вы получили:\n1.600 B-coins', parse_mode='html')
+        await message.reply(f'🎁 <b>{username}</b>, вы получили:\n250 B-coins', parse_mode='html')
 
 
 def register_handlers(dp: Dispatcher):
