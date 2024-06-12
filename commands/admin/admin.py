@@ -260,7 +260,7 @@ async def mpadmin(call: types.CallbackQuery):
     keyboard.add(types.KeyboardButton("🛡 Пользователи"), types.KeyboardButton("💽 ОЗУ"))
     keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
 
-    await call.message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
+    await message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
 
 async def mppravila(call: types.CallbackQuery):
     user_id = call.from_user.id
