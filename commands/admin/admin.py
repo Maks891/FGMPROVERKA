@@ -89,6 +89,7 @@ async def give_bcoins(message):
 async def obnyl_cmd(message: types.Message):
     user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
+        await message.answer("У вас нет доступа к данной команде")
         return
     
     user_name = await get_name(user_id)
@@ -131,8 +132,6 @@ async def obnyl_cmd(message: types.Message):
     cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = ?', (r_user_id))
     conn.commit()
 
-else:
-    await message.answer(f'У вас нет доступа к данной команде')
 
 
 
