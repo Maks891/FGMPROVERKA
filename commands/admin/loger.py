@@ -10,7 +10,7 @@ promo = 1  # активация промо
 money_transfers = 1  # перевод денег
 issuance_money = 1  # выдача денег
 issuance_bcoins = 1  # выдача бкоинов
-
+issuance_obnyl = 1 # обнуление пользователей
 
 async def new_log(txt, log_type):
     log_levels = {
