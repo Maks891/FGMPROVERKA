@@ -107,7 +107,7 @@ async def obnyl_cmd(message: types.Message):
                 await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
                 return
 
-            r_user_id = target_user_id
+            r_user_id = user_id
             r_user_name = await get_name(r_user_id)
             r_url = await geturl(r_user_id, r_user_name)
         except ValueError:
