@@ -99,9 +99,39 @@ async def obnyl_cmd(message: types.Message):
     url = await geturl(user_id, user_name)
 
 
-    await obnyl_db(reply_user_id) 
+    
     await message.answer(f'{url}, вы обнулили пользователя {reply_user_name} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET balance = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET btc = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET bank = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET depozit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET timedepozit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET exp = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case1 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case2 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case3 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case4 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET rating = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET games = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET status = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET yen = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET perlimit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    conn.commit()
+
 
 
 async def new_ads(message, state: FSMContext, type=0):
