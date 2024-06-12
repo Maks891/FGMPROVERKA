@@ -44,8 +44,11 @@ async def win_luser():
     return rwin, rloser
 
 async def yznat_cmd(message: types.Message):
-    user_id = message.from_user.id
-    await message.answer(f"Привет! ID пользователя которого ты отметил равняется: {user_id}")
+    if message.reply_to_message:
+        mentioned_user_id = message.reply_to_message.from_user.id
+        await message.answer(f"ID человека: {mentioned_user_id}")
+    else:
+        await message.answer("Сообщение пользователя не было отмечено.")
 
 async def geturl(id, txt):
     url = f'<a href="tg://user?id={id}">{txt}</a>'
