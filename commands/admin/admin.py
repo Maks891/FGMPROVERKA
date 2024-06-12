@@ -98,7 +98,7 @@ async def obnyl_cmd(message: types.Message):
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
-    except:
+    if reply_user_id is None:
         return await message.answer(f'{url}, чтобы обнулить нужно ответить на сообщение пользователя {rloser}')
 
     await obnyl_db(reply_user_id) 
