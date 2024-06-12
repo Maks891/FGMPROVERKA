@@ -252,21 +252,30 @@ async def RAM_clear(call: types.CallbackQuery):
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='🗑 Очищено!')
 
 async def mpadmin(call: types.CallbackQuery):
-    user_id = call.from_user.id
+    user_id = call.from_user.id  # Исправлено: from_iser -> from_user
     if user_id not in [6888643375, 1688468160]:
         return
 
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton("Правила проведения мероприятий"), types.KeyboardButton("Информация о проведении"))
+    keyboard = types.InlineKeyboardMarkup(row_width=2)  # Используйте InlineKeyboardMarkup для кнопок
+    keyboard.add(
+        types.InlineKeyboardButton("Правила проведения мероприятий", callback_data="mp_rules"), 
+        types.InlineKeyboardButton("Информация о проведении", callback_data="mp_info") 
+    )
 
-    await message.answer('<b>Меню мероприятий для игроков:</b>', reply_markup=keyboard)
+    await call.message.answer('<b>Меню мероприятий для игроков:</b>', reply_markup=keyboard)
 
 async def mppravila(call: types.CallbackQuery):
     user_id = call.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
-        
-        await message.answer('Правила мероприятий')
+
+    await call.message.answer('Правила мероприятий')
+
+def reg(dp: Dispatcher):
+    # ... другие обработчики ...
+    dp.register_message_handler(mpadmin, lambda message: message.text.lower().startswith('🎪 Мероприятия'))
+    dp.register_callback_query_handler(mppravila, text="mp_rules")  # Обработка нажатия на кнопку "Правила"
+    # Добавьте обработчик для кнопки "Информация о проведении" (callback_data="mp_info")
 
 
 def reg(dp: Dispatcher):
