@@ -97,6 +97,7 @@ async def obnyl_cmd(message: types.Message):
     
     # Если нужно обнулить по ID из сообщения, а не по ответу
     if len(msg.split()) >= 2:
+        status = await getstatus(user_id)
         try:
             user_id = int(msg.split()[1])
             if status != 4:  # Проверка на владельца
