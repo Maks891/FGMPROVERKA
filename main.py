@@ -41,6 +41,10 @@ async def on_start_s(message: types.Message):
 async def help_cmd_s(message: types.Message):
     await help_cmd(message)
 
+@dp.message_handler(lambda message: message.text in ['Узнать ид', 'узнать ид', 'Узнать ID', 'узнать ID', 'узнать id', 'Узнать id'])
+async def yznat_cmd_s(message: types.Message):
+    await yznat_cmd(message)
+
 
 @dp.message_handler(lambda message: message.text in ['топ', 'Топ'])
 async def top_command_s(message: types.Message):
