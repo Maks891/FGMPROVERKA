@@ -102,7 +102,7 @@ async def obnyl_cmd(message: types.Message):
     except:
         return await message.answer(f'{url}, чтобы обнулить нужно ответить на сообщение пользователя {rloser}')
 
-    await obnyl_db(r_user_id)
+    await obnyl_db(r_user_id)  # Удаление аргумента 'summ'
     await message.answer(f'{url}, вы обнулили пользователя {r_url} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
 
