@@ -271,11 +271,7 @@ async def mppravila(call: types.CallbackQuery):
 
     await call.message.answer('Правила мероприятий')
 
-def reg(dp: Dispatcher):
-    # ... другие обработчики ...
-    dp.register_message_handler(mpadmin, lambda message: message.text.lower().startswith('🎪 Мероприятия'))
-    dp.register_callback_query_handler(mppravila, text="mp_rules")  # Обработка нажатия на кнопку "Правила"
-    # Добавьте обработчик для кнопки "Информация о проведении" (callback_data="mp_info")
+   
 
 
 def reg(dp: Dispatcher):
@@ -287,7 +283,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(mpadmin, lambda message: message.text.lower().startswith('🎪 Мероприятия'))
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
     dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
-    dp.register_message_handler(mppravila, lambda message: message.text == 'Правила проведения мероприятий')
+    dp.register_callback_query_handler(mppravila, text="mp_rules")  # Обработка нажатия на кнопку "Правила"
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
