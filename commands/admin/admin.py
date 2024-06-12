@@ -101,14 +101,8 @@ async def obnyl_cmd(message):
     except:
         return await message.answer(f'{url}, чтобы обнулить нужно ответить на сообщение пользователя {rloser}')
 
-    try:
-        su = message.text.split()[1]
-        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
-        summ = int(su)
-        summ2 = '{:,}'.format(summ).replace(',', '.')
-
     await obnyl_db(r_user_id)
-    await message.answer(f'{url}, вы обнулили пользователя {r_url}  {rwin}')
+    await message.answer(f'{url}, вы обнулили пользователя {r_url} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
 
 
