@@ -220,6 +220,11 @@ async def dat_cmd_s(message: types.Message):
     await dat_cmd(message)
 
 
+@dp.message_handler(lambda message: message.text.startswith("обнулить") or message.text.startswith("Обнулить"))
+async def obnyl_cmd_s(message: types.Message):
+    await obnyl_cmd(message)
+
+
 @dp.message_handler(lambda message: message.text.startswith("дартс") or message.text.startswith("Дартс"))
 async def darts_cmd_s(message: types.Message):
     await darts_cmd(message)
