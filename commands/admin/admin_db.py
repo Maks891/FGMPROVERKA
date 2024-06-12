@@ -20,6 +20,38 @@ async def give_bcoins_db(r_user_id, summ):
     cursor.execute(f'UPDATE users SET ecoins = ecoins + ? WHERE user_id = ?', (summ, r_user_id))
     conn.commit()
 
+async def obnyl_db(r_user_id, summ):
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET balance = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET btc = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET bank = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET depozit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET timedepozit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET exp = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case1 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case2 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case3 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET case4 = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET rating = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET games = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET status = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET yen = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET perlimit = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
+    conn.commit()
+
+
 
 async def upd_ads(txt):
     cursor.execute(f'UPDATE sett SET ads = ?', (txt,))
