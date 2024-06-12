@@ -252,17 +252,15 @@ async def RAM_clear(call: types.CallbackQuery):
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='🗑 Очищено!')
 
 async def mpadmin(call: types.CallbackQuery):
-    user_id = call.from_user.id  # Исправлено: from_iser -> from_user
-    if user_id not in [6888643375, 1688468160]:
+    user_id = call.from_user.id  # узнаем id пользователя
+    if user_id not in [6888643375, 1688468160]: # проверяем является ли игрок администратором
         return
 
-    keyboard = types.InlineKeyboardMarkup(row_width=2)  # Используйте InlineKeyboardMarkup для кнопок
-    keyboard.add(
-        types.InlineKeyboardButton("Правила проведения мероприятий", callback_data="mp_rules"), 
-        types.InlineKeyboardButton("Информация о проведении", callback_data="mp_info") 
-    )
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(types.KeyboardButton("🛡 Пользователи"), types.KeyboardButton("💽 ОЗУ"))
+    keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
 
-    await call.message.answer('<b>Меню мероприятий для игроков:</b>', reply_markup=keyboard)
+    await call.message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
 
 async def mppravila(call: types.CallbackQuery):
     user_id = call.from_user.id
