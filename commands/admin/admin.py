@@ -85,6 +85,32 @@ async def give_bcoins(message):
     await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
 
+async def obnyl_cmd(message):
+    user_id = message.from_user.id
+    if user_id not in [6888643375, 1688468160]:
+        return
+
+    user_name = await get_name(user_id)
+    rwin, rloser = await win_luser()
+    url = await geturl(user_id, user_name)
+
+    try:
+        r_user_id = message.reply_to_message.from_user.id
+        r_user_name = await get_name(r_user_id)
+        r_url = await geturl(r_user_id, r_user_name)
+    except:
+        return await message.answer(f'{url}, чтобы обнулить нужно ответить на сообщение пользователя {rloser}')
+
+    try:
+        su = message.text.split()[1]
+        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
+        summ = int(su)
+        summ2 = '{:,}'.format(summ).replace(',', '.')
+
+    await give_bcoins_db(r_user_id, summ)
+    await message.answer(f'{url}, вы обнулили пользователя {r_url}  {rwin}')
+    await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
+
 
 async def new_ads(message, state: FSMContext, type=0):
     user_id = message.from_user.id
