@@ -90,20 +90,19 @@ async def obnyl_cmd(message: types.Message):
     user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
-
+    
+    msg = message 
     user_name = await get_name(user_id)
+    reply_user_name = message.reply_to_message.from_user.get_mention(as_html=True)
+    reply_user_id = msg.reply_to_message.from_user.id
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
-    try:
-        r_user_id = message.reply_to_message.from_user.id
-        r_user_name = await get_name(r_user_id)
-        r_url = await geturl(r_user_id, r_user_name)
     except:
         return await message.answer(f'{url}, чтобы обнулить нужно ответить на сообщение пользователя {rloser}')
 
-    await obnyl_db(r_user_id)  # Удаление аргумента 'summ'
-    await message.answer(f'{url}, вы обнулили пользователя {r_url} {rwin}')
+    await obnyl_db(reply_user_id) 
+    await message.answer(f'{url}, вы обнулили пользователя {reply_user_name} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
 
 
