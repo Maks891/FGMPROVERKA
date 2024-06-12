@@ -126,7 +126,7 @@ async def obnyl_cmd(message: types.Message):
     url = await geturl(user_id, user_name)
 
     # Используем один UPDATE запрос
-    cursor.execute(f"""UPDATE users SET ecoins = 0, balance = 0, btc = 0, bank = 0, depozit = 0, timedepozit = 0, exp = 0, case1 = 0, case2 = 0, case3 = 0, case4 = 0, rating = 0, games = 0, status = 0, yen = 0, perlimit = 0 WHERE user_id = "{r_user_id}"""")
+    cursor.execute(f"""UPDATE users SET ecoins = 0, balance = 0, btc = 0, bank = 0, depozit = 0, timedepozit = 0, exp = 0, case1 = 0, case2 = 0, case3 = 0, case4 = 0, rating = 0, games = 0, status = 0, yen = 0, perlimit = 0 WHERE user_id = "{r_user_id}" """)
     conn.commit()
 
     await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
