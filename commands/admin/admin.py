@@ -261,7 +261,7 @@ async def mpadmin(call: types.CallbackQuery):
 
     await message.answer('<b>Меню мероприятий для игроков:</b>', reply_markup=keyboard)
 
-async def mppravila(call.types.CallbackQuery):
+async def mppravila(call: types.CallbackQuery):
 user_id = call.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
