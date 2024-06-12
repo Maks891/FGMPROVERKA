@@ -99,6 +99,22 @@ async def obnyl_cmd(message: types.Message):
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
+    if len(msg.split()) >= 2:
+        status = await getstatus(user_id)
+        try:
+            user_id = int(msg.split()[1])
+            if status != 4:
+                await message.answer(f'❌ Вы не владелец чтобы обнулять.')
+                return
+
+            if not (await chek_user(user_id)):
+                await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
+                return
+
+        except:
+            pass
+
+
 
     
     await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
