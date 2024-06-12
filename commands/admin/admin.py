@@ -101,10 +101,10 @@ async def obnyl_cmd(message: types.Message):
 
     
     await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = ?', (r_user_id))
-    cursor.execute(f'UPDATE users SET balance = {0} WHERE user_id = ?', (r_user_id))
-    cursor.execute(f'UPDATE users SET btc = {0} WHERE user_id = ?', (r_user_id))
-    cursor.execute(f'UPDATE users SET bank = {0} WHERE user_id = ?', (r_user_id))
+    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{reply_user_id}"')
+    cursor.execute(f'UPDATE users SET balance = {0} WHERE user_id = "{reply_user_id}"')
+    cursor.execute(f'UPDATE users SET btc = {0} WHERE user_id = "{reply_user_id}"')
+    cursor.execute(f'UPDATE users SET bank = {0} WHERE user_id = "{reply_user_id}"')
     cursor.execute(f'UPDATE users SET depozit = {0} WHERE user_id = ?', (r_user_id))
     cursor.execute(f'UPDATE users SET timedepozit = {0} WHERE user_id = ?', (r_user_id))
     cursor.execute(f'UPDATE users SET exp = {0} WHERE user_id = ?', (r_user_id))
