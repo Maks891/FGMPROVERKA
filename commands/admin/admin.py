@@ -85,9 +85,8 @@ async def give_bcoins(message):
     await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
 
-@dp.message_handler(lambda message: message.text in ['обнулить', 'Обнулить'])
-async def obnyl_cmd_s(message: types.Message):
-    await obnyl_cmd(message)
+
+async def obnyl_cmd(message: types.Message):
     user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
@@ -227,6 +226,7 @@ async def RAM_clear(call: types.CallbackQuery):
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
+    dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
