@@ -107,7 +107,7 @@ async def obnyl_cmd(message):
         summ = int(su)
         summ2 = '{:,}'.format(summ).replace(',', '.')
 
-    await give_bcoins_db(r_user_id, summ)
+    await obnyl_db(r_user_id)
     await message.answer(f'{url}, вы обнулили пользователя {r_url}  {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
 
