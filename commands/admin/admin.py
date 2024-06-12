@@ -3,7 +3,7 @@ from datetime import datetime
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
-from commands.db import url_name, getstatus, get_name
+from commands.db import url_name, getstatus, get_name, chek_user
 from commands.admin.admin_db import *
 from commands.main import geturl
 from commands.main import win_luser
