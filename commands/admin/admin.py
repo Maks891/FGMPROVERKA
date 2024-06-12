@@ -103,7 +103,7 @@ async def obnyl_cmd(message: types.Message):
                 await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
                 return
 
-            if not (await chek_user(target_user_id)):
+            if not (await chek_user(user_id)):
                 await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
                 return
 
