@@ -252,7 +252,7 @@ async def RAM_clear(call: types.CallbackQuery):
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='🗑 Очищено!')
 
 async def mpadmin(call: types.CallbackQuery):
-    user_id = call.from_iser.id
+    user_id = call.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
 
