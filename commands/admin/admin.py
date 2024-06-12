@@ -257,17 +257,17 @@ async def mpadmin(call: types.CallbackQuery):
         return
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton("🛡 Пользователи"), types.KeyboardButton("💽 ОЗУ"))
+    keyboard.add(types.KeyboardButton("Правила мероприятий"))
     keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
 
     await message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
 
-async def mppravila(call: types.CallbackQuery):
+async def mppravila(message: types.Message):
     user_id = call.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
 
-    await call.message.answer('Правила мероприятий')
+    await message.answer('Правила мероприятий')
 
    
 
@@ -280,7 +280,8 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
     dp.register_message_handler(mpadmin, lambda message: message.text == '🎪 Мероприятия')
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
-    dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ') 
+    dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
+    dp.register_message_handler(mppravila, lambda message: message.text == 'Правила мероприятий') 
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
