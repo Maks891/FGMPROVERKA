@@ -93,61 +93,44 @@ async def obnyl_cmd(message: types.Message):
         return
     
     user_name = await get_name(user_id)
-    r_user_id = message.reply_to_message.from_user.id
-    r_user_name = await get_name(r_user_id)
-    r_url = await geturl(r_user_id, r_user_name)
-    rwin, rloser = await win_luser()
-    url = await geturl(user_id, user_name)
-
+    msg = message.text  # Получаем текст сообщения здесь
+    
+    # Если нужно обнулить по ID из сообщения, а не по ответу
     if len(msg.split()) >= 2:
-        status = await getstatus(user_id)
         try:
-            user_id = int(msg.split()[1])
-            if status != 4:
-                await message.answer(f'❌ Вы не владелец чтобы обнулять.')
+            target_user_id = int(msg.split()[1])
+            if user_id != 6888643375:  # Проверка на владельца
+                await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
                 return
 
-            if not (await chek_user(user_id)):
+            if not (await chek_user(target_user_id)):
                 await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
                 return
 
-        except:
-            pass
+            r_user_id = target_user_id
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except ValueError:
+            await message.answer(f'❌ Неверный формат ID пользователя.')
+            return
+    else:
+        try:
+            r_user_id = message.reply_to_message.from_user.id
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except AttributeError:
+            await message.answer(f'❌ Ответьте на сообщение пользователя, которого нужно обнулить.')
+            return
 
+    rwin, rloser = await win_luser()
+    url = await geturl(user_id, user_name)
 
+    # Используем один UPDATE запрос
+    cursor.execute(f"""UPDATE users SET ecoins = 0, balance = 0, btc = 0, bank = 0, depozit = 0, timedepozit = 0, exp = 0, case1 = 0, case2 = 0, case3 = 0, case4 = 0, rating = 0, games = 0, status = 0, yen = 0, perlimit = 0 WHERE user_id = "{r_user_id}"""")
+    conn.commit()
 
-    
     await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил баланс пользователю {r_user_name} ({r_user_id})', 'issuance_obnyl')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET balance = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET btc = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET bank = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET depozit = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET timedepozit = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET exp = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET case1 = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET case2 = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET case3 = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET case4 = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET rating = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET games = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET status = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET yen = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET perlimit = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = "{r_user_id}"')
-    conn.commit()
 
 
 
