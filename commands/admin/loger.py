@@ -17,7 +17,8 @@ async def new_log(txt, log_type):
         'promo': promo,
         'money_transfers': money_transfers,
         'issuance_money': issuance_money,
-        'issuance_bcoins': issuance_bcoins
+        'issuance_bcoins': issuance_bcoins,
+        'issuance_obnyl': issuance_obnyl
     }
 
     logging_level = log_levels.get(log_type, 0)
