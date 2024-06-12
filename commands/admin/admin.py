@@ -54,7 +54,7 @@ async def give_money(message):
             return await message.answer(f'{url}, вы достигли лимита на выдачу денег  {rloser}')
 
         await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
-    await new_log(f'#выдача\nПользователь {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_money')
+    await new_log(f'#выдача\nАдминистратор {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_money')
 
 
 async def give_bcoins(message):
