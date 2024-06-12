@@ -42,6 +42,9 @@ async def win_luser():
     rloser = random.choice(loser)
     return rwin, rloser
 
+async def yznat_cmd(message: types.Message):
+    user_id = message.from_user.id
+    await message.answer(f"Привет! ID пользователя которого ты отметил равняется: {user_id}")
 
 async def geturl(id, txt):
     url = f'<a href="tg://user?id={id}">{txt}</a>'
