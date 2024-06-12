@@ -257,7 +257,7 @@ async def mpadmin(call: types.CallbackQuery):
         return
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton("Правила проведения мероприятий"), types.KeyboardButton("Информация о проведении")
+    keyboard.add(types.KeyboardButton("Правила проведения мероприятий"), types.KeyboardButton("Информация о проведении"))
 
     await message.answer('<b>Меню мероприятий для игроков:</b>', reply_markup=keyboard)
 
