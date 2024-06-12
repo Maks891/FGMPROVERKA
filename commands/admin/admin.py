@@ -251,6 +251,15 @@ async def RAM_clear(call: types.CallbackQuery):
 
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='🗑 Очищено!')
 
+async def mp(call: types.CallbackQuery):
+    user_id = call.from_iser.id
+    if user_id not in [6888643375, 1688468160]:
+        return
+
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(types.KeyboardButton("🛡 Пользователи"))
+    keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
+
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
@@ -258,6 +267,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
+    dp.register_message_handler(mp, lambda message: message.text.lower().startswith('🎪 Мероприятия'))
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
     dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
