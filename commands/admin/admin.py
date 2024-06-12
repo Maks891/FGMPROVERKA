@@ -91,16 +91,16 @@ async def obnyl_cmd(message: types.Message):
     if user_id not in [6888643375, 1688468160]:
         return
     
-    msg = message 
     user_name = await get_name(user_id)
-    reply_user_name = message.reply_to_message.from_user.get_mention(as_html=True)
-    reply_user_id = msg.reply_to_message.from_user.id
+    r_user_id = message.reply_to_message.from_user.id
+    r_user_name = await get_name(r_user_id)
+    r_url = await geturl(r_user_id, r_user_name)
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
 
     
-    await message.answer(f'{url}, вы обнулили пользователя {reply_user_name} {rwin}')
+    await message.answer(f'{url}, вы обнулили пользователя {r_user_name} {rwin}')
     await new_log(f'#обнуление\nАдмин {user_name} ({user_id})\nОбнулил пользователя {r_user_name} ({r_user_id})')
     cursor.execute(f'UPDATE users SET ecoins = 0 WHERE user_id = ?', (r_user_id))
     cursor.execute(f'UPDATE users SET balance = 0 WHERE user_id = ?', (r_user_id))
