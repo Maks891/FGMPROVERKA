@@ -99,7 +99,7 @@ async def obnyl_cmd(message: types.Message):
     if len(msg.split()) >= 2:
         try:
             user_id = int(msg.split()[1])
-            if user_id != 6888643375:  # Проверка на владельца
+            if status != 4:  # Проверка на владельца
                 await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
                 return
 
