@@ -1,3 +1,4 @@
+from aiogram import Bot, Dispatcher, types
 from commands.db import reg_user, get_name
 from commands.assets import kb
 import random
