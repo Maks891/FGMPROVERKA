@@ -131,6 +131,9 @@ async def obnyl_cmd(message: types.Message):
     cursor.execute(f'UPDATE users SET ecoins = {0} WHERE user_id = ?', (r_user_id))
     conn.commit()
 
+else:
+    await message.answer(f'У вас нет доступа к данной команде')
+
 
 
 async def new_ads(message, state: FSMContext, type=0):
