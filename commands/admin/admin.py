@@ -381,7 +381,7 @@ async def resetlimit(message: types.Message):
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
-    dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('выдатьид'))
+    dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('идвыдать'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
