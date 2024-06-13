@@ -107,7 +107,7 @@ async def give_bcoins(message):
             return
 
     try:
-        su = message.text.split()[2]  # Изменено с message.text.split()[1] на message.text.split()[2], так как первый элемент - это ID пользователя
+        su = message.text.split()[1]  # Изменено с message.text.split()[1] на message.text.split()[2], так как первый элемент - это ID пользователя
         su = su.replace('к', '000').replace('м', '000000').replace('.', '')
         summ = int(su)
         summ2 = '{:,}'.format(summ).replace(',', '.')
