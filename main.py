@@ -6,6 +6,7 @@ from commands.help import *
 from commands.rz import *
 from commands.transfer import *
 from commands.games.games import *
+from commands.punishment.py import *
 from assets.auto import automatisation
 from commands.ore.btcs import *
 from commands.ore.dig import *
