@@ -293,6 +293,8 @@ async def resetlimit(message: types.Message):
     conn.commit()
 
     await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
+    await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
+    
  
     
 
