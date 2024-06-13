@@ -89,13 +89,32 @@ async def give_bcoins(message):
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
-    try:
-        r_user_id = message.reply_to_message.from_user.id
-        r_user_name = await get_name(r_user_id)
-        r_url = await geturl(r_user_id, r_user_name)
-    except:
-        return await message.answer(f'{url}, чтобы выдать деньги нужно ответить на сообщение пользователя {rloser}')
+    if len(message.text.split()) >= 2:
+        status = await getstatus(user_id)
+        try:
+            user_id = int(message.text.split()[1])
+            if status != 4:  # Проверка на владельца
+                await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
+                return
 
+            if not (await chek_user(user_id)):
+                await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
+                return
+
+            r_user_id = user_id
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except ValueError:
+            await message.answer(f'❌ Неверный формат ID пользователя.')
+            return
+    else:
+        try:
+            r_user_id = message.reply_to_message.from_user.id
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except AttributeError:
+            await message.answer(f'❌ Ответьте на сообщение пользователя, которого нужно обнулить.')
+            return
     try:
         su = message.text.split()[1]
         su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
