@@ -44,7 +44,7 @@ async def give_money(message):
     except:
         return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
 
-    if user_id in cfg.admin:
+    if user_id in [6888643375, 1688468160]:
         await give_money_db(user_id, r_user_id, summ, 'rab')
         await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
     else:
@@ -54,6 +54,65 @@ async def give_money(message):
 
         await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
     await new_log(f'#выдача\nПользователь {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_money')
+
+async def gived_money(message):
+    user_id = message.from_user.id
+    status = await getstatus(user_id)
+    if user_id not in [6888643375, 1688468160] and status == 0:
+        return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"')
+
+    user_name = await get_name(user_id)
+    rwin, rloser = await win_luser()
+    url = await geturl(user_id, user_name)
+    msg = message.text 
+
+    # Определение ID получателя (из ответа или из текста сообщения)
+    if len(msg.split()) >= 2:
+        try:
+            r_user_id = int(msg.split()[1])
+            if status != 4:  # Проверка на владельца
+                await message.answer(f'❌ Вы не владелец, чтобы выдавать деньги по ID.')
+                return
+
+            if not (await chek_user(r_user_id)):
+                await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
+                return
+
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except ValueError:
+            await message.answer(f'❌ Неверный формат ID пользователя.')
+            return
+    else:
+        try:
+            r_user_id = message.reply_to_message.from_user.id
+            r_user_name = await get_name(r_user_id)
+            r_url = await geturl(r_user_id, r_user_name)
+        except AttributeError:
+            await message.answer(f'❌ Ответьте на сообщение пользователя или укажите ID в сообщении.')
+            return
+
+    # Получение суммы из сообщения
+    try:
+        su = message.text.split()[2]  # Сумма теперь третий аргумент
+        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
+        summ = int(su)
+        summ2 = '{:,}'.format(summ).replace(',', '.')
+    except (IndexError, ValueError):
+        return await message.answer(f'{url}, вы не ввели сумму, которую хотите выдать.')
+
+    # Выдача денег
+    if user_id in [6888643375, 1688468160]:
+        await give_money_db(user_id, r_user_id, summ, 'rab')
+        await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
+    else:
+        res = await give_money_db(user_id, r_user_id, summ, 'adm')
+        if res == 'limit':
+            return await message.answer(f'{url}, вы достигли лимита на выдачу денег  {rloser}')
+
+        await message.answer(f'{url}, вы выдали {summ2}$ пользователю {r_url}  {rwin}')
+
+    await new_log(f'#выдача\nАдминистратор {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_money')
 
 
 async def give_bcoins(message):
@@ -322,6 +381,7 @@ async def resetlimit(message: types.Message):
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
+    dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('выдатьид'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
