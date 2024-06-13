@@ -49,5 +49,6 @@ async def unmute_cmd(message):
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(mute_cmd, commands=['mute', 'мут'])
-    dp.register_message_handler(unmute_cmd, commands=['unmute', 'размут'])
+    dp.register_message_handler(mute_cmd, commands=['mute', 'мут'], commands_prefix='!?./', is_chat_admin=True)
+    dp.register_message_handler(unmute_cmd, commands=['unmute', 'размут'], commands_prefix='!?./', is_chat_admin=True)
+    dp.register_message_handler(unmute_cmd, commands=['ban', 'бан', 'кик', 'kick'], commands_prefix='!?./', is_chat_admin=True)
