@@ -38,7 +38,16 @@ async def mute_cmd(message):
       await bot.restrict_chat_member(message.chat.id, message.reply_to_message.from_user.id, types.ChatPermissions(False), until_date = timestamp)
       await message.reply(f'👤 Администратор: {name1}\n🛑 Замутил: <a href="tg://user?id={message.reply_to_message.from_user.id}">{message.reply_to_message.from_user.first_name}</a>\n[⏰] Срок: {muteint} {mutetype}\n[📃] Причина: {comment}',  parse_mode='html')
 
+async def unmute_cmd(message):
+   name1 = message.from_user.get_mention(as_html=True)
+   if not message.reply_to_message:
+      await message.reply("ℹ Эта команда должна быть ответом на сообщение!")
+      return
+   await bot.restrict_chat_member(message.chat.id, message.reply_to_message.from_user.id, types.ChatPermissions(True, True, True, True))
+   await message.reply(f'👤  Администратор: {name1}\n[🔊] Размутил: <a href="tg://user?id={message.reply_to_message.from_user.id}">{message.reply_to_message.from_user.first_name}</a>',  parse_mode='html')
+
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(mute_cmd, commands='mute')
+    dp.register_message_handler(mute_cmd, commands='mute', 'мут')
+    dp.register_message_handler(unmute_cmd, commands='размут', 'unmute')
