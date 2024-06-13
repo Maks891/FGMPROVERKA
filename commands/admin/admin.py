@@ -269,7 +269,12 @@ async def mppravila(message: types.Message):
 
     await message.answer('Правила мероприятий')
 
-   
+async def yclovia(message: types.Message):
+    user_id = message.from_user.id
+    if user_id not in [6888643375, 1688468160]:
+        return
+
+    await message.answer('Правила мероприятий')  
 
 
 def reg(dp: Dispatcher):
@@ -282,6 +287,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
     dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
     dp.register_message_handler(mppravila, lambda message: message.text == 'Правила мероприятий') 
+    dp.register_message_handler(yclovia, lambda message: message.text == 'Информация о мероприятих') 
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
