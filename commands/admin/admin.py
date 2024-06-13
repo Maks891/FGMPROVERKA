@@ -124,42 +124,23 @@ async def give_bcoins(message):
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
-    if len(message.text.split()) >= 2:
-        status = await getstatus(user_id)
-        try:
-            r_user_id = int(message.text.split()[1])
-            if status != 4:  # Проверка на владельца
-                await message.answer(f'❌ Вы не владелец, чтобы выдавать донат по ID.')
-                return
-
-            if not (await chek_user(r_user_id)):  # Исправлено название функции с chek_user на check_user
-                await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
-                return
-
-            r_user_name = await get_name(r_user_id)
-            r_url = await geturl(r_user_id, r_user_name)
-        except ValueError:
-            await message.answer(f'❌ Неверный формат ID пользователя.')
-            return
-    else:
-        try:
-            r_user_id = message.reply_to_message.from_user.id
-            r_user_name = await get_name(r_user_id)
-            r_url = await geturl(r_user_id, r_user_name)
-        except AttributeError:
-            await message.answer(f'❌ Ответьте на сообщение пользователя, которого нужно обнулить.')
-            return
+    try:
+        r_user_id = message.reply_to_message.from_user.id
+        r_user_name = await get_name(r_user_id)
+        r_url = await geturl(r_user_id, r_user_name)
+    except:
+        return await message.answer(f'{url}, чтобы выдать деньги нужно ответить на сообщение пользователя {rloser}')
 
     try:
-        su = message.text.split()[1]  # Изменено с message.text.split()[1] на message.text.split()[2], так как первый элемент - это ID пользователя
-        su = su.replace('к', '000').replace('м', '000000').replace('.', '')
+        su = message.text.split()[1]
+        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
         summ = int(su)
         summ2 = '{:,}'.format(summ).replace(',', '.')
-    except (IndexError, ValueError):
-        return await message.answer(f'{url}, вы не ввели сумму, которую хотите выдать {rloser}')
+    except:
+        return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
 
     await give_bcoins_db(r_user_id, summ)
-    await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url} {rwin}')
+    await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
 
 
