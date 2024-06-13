@@ -144,7 +144,6 @@ async def give_bcoins(message):
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
 
 async def gived_bcoins(message):
-    async def gived_money(message):
     user_id = message.from_user.id
     status = await getstatus(user_id)
     if user_id not in [6888643375, 1688468160] and status == 0:
