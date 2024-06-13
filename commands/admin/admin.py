@@ -33,30 +33,20 @@ async def give_money(message):
 
     # Определение ID получателя (из ответа или из текста сообщения)
     if len(msg.split()) >= 2:
-        try:
-            r_user_id = int(msg.split()[1])
-            if status != 4:  # Проверка на владельца
-                await message.answer(f'❌ Вы не владелец, чтобы выдавать деньги по ID.')
-                return
-
-            if not (await chek_user(r_user_id)):
-                await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
-                return
-
-            r_user_name = await get_name(r_user_id)
-            r_url = await geturl(r_user_id, r_user_name)
-        except ValueError:
-            await message.answer(f'❌ Неверный формат ID пользователя.')
-            return
-    else:
-        try:
-            r_user_id = message.reply_to_message.from_user.id
-            r_user_name = await get_name(r_user_id)
-            r_url = await geturl(r_user_id, r_user_name)
-        except AttributeError:
-            await message.answer(f'❌ Ответьте на сообщение пользователя или укажите ID в сообщении.')
-            return
-
+    try:
+        r_user_id = int(msg.split()[1])
+        # ...
+    except ValueError:
+        await message.answer(f'❌ Неверный формат ID пользователя.')
+        return
+else:
+    try:
+        r_user_id = message.reply_to_message.from_user.id if message.reply_to_message else None
+        r_user_name = await get_name(r_user_id) if r_user_id else None
+        r_url = await geturl(r_user_id, r_user_name) if r_user_id else None
+    except AttributeError:
+        await message.answer(f'❌ Ответьте на сообщение пользователя или укажите ID в сообщении.')
+        return
     # Получение суммы из сообщения
     try:
         su = message.text.split()[2]  # Сумма теперь третий аргумент
