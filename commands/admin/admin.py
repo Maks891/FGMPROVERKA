@@ -22,7 +22,7 @@ class new_ads_state(StatesGroup):
 async def give_money(message):
     user_id = message.from_user.id
     status = await getstatus(user_id)
-    if user_id not in cfg.admin and status == 0:
+    if user_id not in [6888643375, 1688468160] and status == 0:
         return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"')
 
     user_name = await get_name(user_id)
