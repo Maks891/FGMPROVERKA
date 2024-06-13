@@ -49,5 +49,5 @@ async def unmute_cmd(message):
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(mute_cmd, commands='mute')
-    dp.register_message_handler(unmute_cmd, commands='unmute')
+    dp.register_message_handler(mute_cmd, commands=['mute', 'мут'])
+    dp.register_message_handler(unmute_cmd, commands=['unmute', 'размут'])
