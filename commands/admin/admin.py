@@ -94,7 +94,7 @@ async def give_bcoins(message):
         try:
             r_user_id = int(message.text.split()[1])
             if status != 4:  # Проверка на владельца
-                await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
+                await message.answer(f'❌ Вы не владелец чтобы выдавать донат по ID.')
                 return
 
             if not (await chek_user(r_user_id)):
