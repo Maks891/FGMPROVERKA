@@ -146,6 +146,7 @@ async def give_bcoins(message):
 async def gived_bcoins(message):
     user_id = message.from_user.id
     status = await getstatus(user_id)
+
     if user_id not in [6888643375, 1688468160] and status == 0:
         return await message.answer('👮‍♂️ Вы не являетесь администратором бота чтобы использовать данную команду.\nДля покупки введи команду "Донат"')
 
@@ -154,7 +155,7 @@ async def gived_bcoins(message):
     url = await geturl(user_id, user_name)
     msg = message.text 
 
-    # Определение ID получателя (из ответа или из текста сообщения)
+    # Определение ID получателя
     if len(msg.split()) >= 2:
         try:
             r_user_id = int(msg.split()[1])
@@ -180,14 +181,16 @@ async def gived_bcoins(message):
             await message.answer(f'❌ Ответьте на сообщение пользователя или укажите ID в сообщении.')
             return
 
+    # Обработка суммы
     try:
-        su = message.text.split()[1]
-        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
-        summ = int(su)
+        summ_str = msg.split()[2] if len(msg.split()) >= 3 else ''
+        summ_str = summ_str.replace('к', '000').replace('м', '000000').replace('.', '')
+        summ = int(summ_str)
         summ2 = '{:,}'.format(summ).replace(',', '.')
     except:
         return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
 
+    # Выдача Bcoins
     await give_bcoins_db(r_user_id, summ)
     await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
