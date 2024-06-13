@@ -167,7 +167,7 @@ async def new_ads(message, state: FSMContext, type=0):
     await admin_menu(message)
 
 
-async def unloading(message):
+async def unloading(message, bot: Bot):
     user_id = message.from_user.id
     if user_id not in [6888643375, 1688468160]:
         return
@@ -175,9 +175,12 @@ async def unloading(message):
     if message.chat.type != 'private':
         return
 
-    time = datetime.now().strftime("%Y-%m-%d в %H:%M:%S")
-    with open('users.db', 'rb') as file:
-        await bot.send_document(message.chat.id, file, caption=f'🛡 Копия бд создана <blockquote>{time}</blockquote>')
+    time = datetime.datetime.now().strftime("%Y-%m-%d в %H:%M:%S")
+    try:
+        with open('users.db', 'rb') as file:
+            await bot.send_document(message.chat.id, file, caption=f'🛡 Копия бд создана <blockquote>{time}</blockquote>')
+    except Exception as e:
+        print(f"Error sending document: {e}")
 
 
 async def admin_menu(message: types.Message):
