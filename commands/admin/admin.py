@@ -409,11 +409,27 @@ async def resetlimit(message: types.Message):
     await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
     await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
     
- 
+
+async def admin_command(message: types.Message):
+    user_id = message.from_user.id
+    if str(user_id) == str(admin_id):
+        await message.answer('Напишите сообщение для рассылки')
+        # Ожидаем ответ админа
+
+@dp.message()
+async def handle_message_for_broadcast(message: types.Message, state: FSMContext):
+    await state.set_state()
+    user_id = message.from_user.id
+    if user_id == admin_id:
+    # Получаем список всех пользователей
+        for user_id in ids:
+        # Отправляем сообщение каждому пользователю
+            await bot.send_message(user_id, message.text)
     
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
+    dp.register_message_handler(admin_command, commands='send_all')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
     dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('идвыдать'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
