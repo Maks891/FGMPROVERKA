@@ -275,6 +275,7 @@ if __name__ == '__main__':
     commands.property.main.reg(dp)
     commands.property.buy.reg(dp)
     commands.admin.admin.reg(dp)
+    commands.punishment.reg(dp)
     commands.earnings.farm.main.reg(dp)
     commands.earnings.business.main.reg(dp)
     commands.earnings.garden.main.reg(dp)
