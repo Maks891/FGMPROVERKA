@@ -276,10 +276,13 @@ async def yclovia(message: types.Message):
 
     await message.answer('Правила мероприятий')  
 
+async def remove_keyboard(message: types.Message):
+    await message.reply('Клавиатура удалена', reply_markup=types.ReplyKeyboardRemove())
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
+    dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
