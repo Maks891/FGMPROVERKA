@@ -92,16 +92,15 @@ async def give_bcoins(message):
     if len(message.text.split()) >= 2:
         status = await getstatus(user_id)
         try:
-            user_id = int(message.text.split()[1])
+            r_user_id = int(message.text.split()[1])
             if status != 4:  # Проверка на владельца
                 await message.answer(f'❌ Вы не владелец чтобы обнулять по ID.')
                 return
 
-            if not (await chek_user(user_id)):
+            if not (await chek_user(r_user_id)):
                 await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
                 return
 
-            r_user_id = user_id
             r_user_name = await get_name(r_user_id)
             r_url = await geturl(r_user_id, r_user_name)
         except ValueError:
@@ -115,6 +114,7 @@ async def give_bcoins(message):
         except AttributeError:
             await message.answer(f'❌ Ответьте на сообщение пользователя, которого нужно обнулить.')
             return
+
     try:
         su = message.text.split()[1]
         su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
@@ -126,7 +126,6 @@ async def give_bcoins(message):
     await give_bcoins_db(r_user_id, summ)
     await message.answer(f'{url}, вы выдали {summ2}💳 пользователю {r_url}  {rwin}')
     await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
-
 
 async def obnyl_cmd(message: types.Message):
     user_id = message.from_user.id
