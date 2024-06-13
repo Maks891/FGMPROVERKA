@@ -257,7 +257,7 @@ async def mpadmin(message: types.Message):
         return
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton("Правила мероприятий"), keyboard.add(types.KeyboardButton("Информация о мероприятиях"))
+    keyboard.add(types.KeyboardButton("Правила мероприятий"), types.KeyboardButton("Информация о мероприятиях"))
     keyboard.add(types.KeyboardButton("👮 Вернуться в админ меню"))
 
     await message.answer('Меню мероприятий для игроков:', reply_markup=keyboard)
