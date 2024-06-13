@@ -190,7 +190,7 @@ async def admin_menu(message: types.Message):
             [types.KeyboardButton(text='📍 Рассылка'), types.KeyboardButton(text='🕹 Управление')],
             [types.KeyboardButton(text='✨ Промокоды'), types.KeyboardButton(text='📥 Выгрузка')],
             [types.KeyboardButton(text='🎪 Мероприятия'), types.KeyboardButton(text='⚙️ Изменить текст рекламы')],
-            [types.KeyboardButton(text='Сбросить время лимитов')]
+            [types.KeyboardButton(text='❗ Сбросить время лимитов ❗')]
         ],
         resize_keyboard=True
     )
@@ -280,6 +280,18 @@ async def yclovia(message: types.Message):
 async def remove_keyboard(message: types.Message):
     await message.reply('Клавиатура удалена', reply_markup=types.ReplyKeyboardRemove())
 
+async def resetlimit(message: types.Message):
+    user_id = message.from_user.id
+    if user_id not in [6888643375, 1688468160]:
+        return
+
+    cursor.execute(f"""UPDATE users SET per = 0 """)
+    conn.commit()
+
+    await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
+ 
+    
+
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
@@ -288,6 +300,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(give_bcoins, lambda message: message.text.lower().startswith('бдать'))
     dp.register_message_handler(unloading, lambda message: message.text.lower().startswith('📥 Выгрузка'))
     dp.register_message_handler(mpadmin, lambda message: message.text == '🎪 Мероприятия')
+    dp.register_message_handler(resetlimit, lambda message: message.text == '❗ Сбросить время лимитов ❗')
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
     dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
     dp.register_message_handler(mppravila, lambda message: message.text == 'Правила мероприятий') 
