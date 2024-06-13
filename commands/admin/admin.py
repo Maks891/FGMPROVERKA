@@ -97,7 +97,7 @@ async def give_bcoins(message):
                 await message.answer(f'❌ Вы не владелец, чтобы выдавать донат по ID.')
                 return
 
-            if not (await check_user(r_user_id)):  # Исправлено название функции с chek_user на check_user
+            if not (await chek_user(r_user_id)):  # Исправлено название функции с chek_user на check_user
                 await message.answer(f'❌ Данного игрока не существует. Перепроверьте указанный <b>Telegram ID</b>')
                 return
 
