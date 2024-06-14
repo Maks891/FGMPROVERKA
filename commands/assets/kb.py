@@ -23,9 +23,9 @@ def help_back():
 def start():
     keyboards = InlineKeyboardMarkup()
     buttons = [
-        InlineKeyboardButton("😄 Добавить в чат", url=f"https://t.me/{cfg.bot_username}?startgroup=true"),
-        InlineKeyboardButton("👥 Общая беседа", url=f"https://{cfg.chat}"),
-        InlineKeyboardButton("👥 Наш канал", url=f"https://{cfg.chanell}"),
+        InlineKeyboardButton("😄 Добавить в чат", url=f"https://t.me/FGMoficial_bot?startgroup=true"),
+        InlineKeyboardButton("👥 Общая беседа", url=f"https://t.me/FGMOFF"),
+        InlineKeyboardButton("👥 Наш канал", url=f"https://t.me/FGMINFO"),
     ]
     keyboards.add(buttons[0], buttons[1])
     keyboards.add(buttons[2])
