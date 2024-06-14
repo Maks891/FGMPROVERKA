@@ -1,6 +1,6 @@
 from datetime import datetime
 from aiogram import Dispatcher, types
-from commands.db import getstatus, getbalance, getads, getpofildb, url_name, chek_user
+from commands.db import getstatus, getbalance, getads, getpofildb, url_name, chek_user, get_like
 from assets.antispam import antispam, new_earning_msg, antispam_earning
 from commands.assets.transform import transform
 from commands.property import lists
@@ -157,8 +157,14 @@ async def profil_back(call: types.CallbackQuery):
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                 text=text, reply_markup=kb.profil(call.from_user.id))
 
+@antispam
+async def likee(message):
+    name, like = await get_like(message.from_user.id)
+    like = '{:,}'.format(btc).replace(',', '.')
+    await message.answer(f'{name}, на вашем балансе {like} BTC 🌐', disable_web_page_preview=True)
 
 def reg(dp: Dispatcher):
+    dp.register_message_handler(likee, lambda message: message.text in ['Лайк', 'лайк'])
     dp.register_message_handler(balance_cmd, lambda message: message.text in ['б', 'Б', 'Баланс', 'баланс'])
     dp.register_message_handler(btc_cmd, lambda message: message.text in ['биткоины', 'Биткоины'])
     dp.register_message_handler(profil_cmd, lambda message: message.text.lower().startswith('профиль'))
