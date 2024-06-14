@@ -114,4 +114,5 @@ planes = {
     14: ('F-22 Raptor', 2414, 1800, 'https://te.legra.ph/file/59ddb48f5e3a6a567136c.jpg', 4000000000000),
     15: ('Airbus 380 Custom', 900, 4000, 'https://te.legra.ph/file/698571677db7c6a02fee2.jpg', 6000000000000),
     16: ('B-2 Spirit Stealth Bomber', 1010, 2400, 'https://te.legra.ph/file/a4ecf2dc5f1b530b9f96a.jpg', 13500000000000),
+    17: ('Concorde', 2440, 64740, 'https://telegra.ph/file/ac70a4335cdcd4a0e8df7.jpg', 90000000000000),
 }
