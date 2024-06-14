@@ -12,14 +12,15 @@ cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER, name TEXT, balance TEXT, btc INTEGER, 
 bank INTEGER, depozit INTEGER, timedepozit NUMERIC, exp INTEGER, energy INTEGER, case1 INTEGER, case2 INTEGER, 
 case3 INTEGER, case4 INTEGER, rating INTEGER, games INTEGER, ecoins INTEGER, per TEXT, dregister NUMERIC, corn INTEGER,
-status INTEGER, issued NUMERIC, ban NUMERIC, yen TEXT, perlimit TEXT, like TEXT)''')
+status INTEGER, issued NUMERIC, ban NUMERIC, yen TEXT, perlimit TEXT)''')
 
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS mine (user_id INTEGER, iron INTEGER, gold INTEGER, diamond INTEGER, 
 amestit INTEGER, aquamarine INTEGER, emeralds INTEGER, matter INTEGER, plasma INTEGER, nickel INTEGER, 
 titanium INTEGER, cobalt INTEGER, ectoplasm INTEGER, biores INTEGER, palladium INTEGER)''')
 
-
+cursor.execute('''CREATE TABLE IF NOT EXISTS like
+                (user_id INTEGER, liked TEXT)''')
 cursor.execute('''CREATE TABLE IF NOT EXISTS ferma
                 (user_id INTEGER, balance NUMERIC, nalogs INTEGER, cards INTEGER)''')
 
@@ -136,7 +137,7 @@ async def get_balance(user_id):
     return int(i)
 
 async def get_like(user_id):
-    i = cursor.execute('SELECT like FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    i = cursor.execute('SELECT liked FROM like WHERE user_id = ?', (user_id,)).fetchone()[0]
     return int(i)
 
 
