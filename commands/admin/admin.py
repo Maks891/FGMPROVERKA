@@ -420,11 +420,18 @@ async def resetlimit(message: types.Message):
 
     
 
+async def send_message_command(message: types.Message):
+    user_id = message.get_args()
+    if user_id:
+        await bot.send_message(user_id, 'Это сообщение от бота.')
+    else:
+        await message.reply('Пожалуйста, укажите user_id пользователя.')
 
     
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
+    dp.register_message_handler(send_message_command, commands='message')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
     dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('идвыдать'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
