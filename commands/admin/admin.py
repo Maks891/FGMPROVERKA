@@ -408,13 +408,24 @@ async def resetlimit(message: types.Message):
 
     await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
     await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
-    
 
+    
+async def send_user_info(message: types.Message):
+    conn = await storage.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, user_id, ecoins FROM users")
+    users = cursor.fetchall()
+    conn.close()
+    
+    for user in users:
+        user_name, user_id, ecoins = user
+        await message.answer(f"Пользователь: {name}\nID: {user_id}\nECOINS: {ecoins}")
 
     
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
+    dp.register_message_handler(send_user_info, commands='users')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
     dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('идвыдать'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
