@@ -8,6 +8,8 @@ from decimal import Decimal
 conn = sqlite3.connect('users.db')
 cursor = conn.cursor()
 
+cursor.execute('ALTER TABLE users ADD COLUMN like INTEGER DEFAULT 0')
+conn.commit()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER, name TEXT, balance TEXT, btc INTEGER, 
 bank INTEGER, depozit INTEGER, timedepozit NUMERIC, exp INTEGER, energy INTEGER, case1 INTEGER, case2 INTEGER, 
