@@ -12,7 +12,7 @@ cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER, name TEXT, balance TEXT, btc INTEGER, 
 bank INTEGER, depozit INTEGER, timedepozit NUMERIC, exp INTEGER, energy INTEGER, case1 INTEGER, case2 INTEGER, 
 case3 INTEGER, case4 INTEGER, rating INTEGER, games INTEGER, ecoins INTEGER, per TEXT, dregister NUMERIC, corn INTEGER,
-status INTEGER, issued NUMERIC, ban NUMERIC, yen TEXT, perlimit TEXT)''')
+status INTEGER, issued NUMERIC, ban NUMERIC, yen TEXT, perlimit TEXT, like TEXT)''')
 
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS mine (user_id INTEGER, iron INTEGER, gold INTEGER, diamond INTEGER, 
@@ -72,9 +72,9 @@ async def reg_user(user_id):
     if not ex:
         dt = int(datetime.now().timestamp())
         cursor.execute('INSERT INTO users (user_id, name, balance, btc, bank, depozit, timedepozit, exp, energy, case1,'
-                       'case2, case3, case4, rating, games, ecoins, per, dregister, corn, status, yen, perlimit)'
-                       'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                       (user_id, 'Игрок', cfg.start_money, 200, 0, 0, dt, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, dt, 0, 0, 0, 0))
+                       'case2, case3, case4, rating, games, ecoins, per, dregister, corn, status, yen, perlimit, like)'
+                       'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                       (user_id, 'Игрок', 10000, 200, 0, 0, dt, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, dt, 0, 0, 0, 0, 0))
 
         cursor.execute('INSERT INTO mine (user_id, iron, gold, diamond, amestit, aquamarine, emeralds, matter, plasma, '
                        'nickel, titanium, cobalt, ectoplasm, biores, palladium)'
