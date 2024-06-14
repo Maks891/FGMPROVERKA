@@ -60,7 +60,7 @@ async def dat_cmd(message: types.Message):
         if int(balance) >= summ:
             await message.answer(f'Вы передали {summ2}$ игроку {url2} {rwin}')
             await getperevod(summ, user_id, reply_user_id)
-            await new_log(f'#перевод\n{user_id}\n Имя: {name}\nСумма: {summ2}\nПередал: {reply_user_id}', 'money_transfers')
+            await new_log(f'#перевод\n{user_id}\nСумма: {summ2}\nПередал: {reply_user_id}', 'money_transfers')
         else:
             await message.reply(f'{url}, вы не можете передать больше чем у вас есть на балансе {rloser}')
 
