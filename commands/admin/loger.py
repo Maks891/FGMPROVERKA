@@ -7,7 +7,7 @@ import config_ex as cfg
 # 3 - записывать логи в файл и отправлять в логчат
 
 promo = 1  # активация промо
-money_transfers = 3  # перевод денег
+money_transfers = 1  # перевод денег
 issuance_money = 1  # выдача денег
 issuance_bcoins = 1  # выдача бкоинов
 issuance_obnyl = 1 # обнуление пользователей
