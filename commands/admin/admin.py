@@ -423,10 +423,12 @@ async def resetlimit(message: types.Message):
 async def send_message_command(message: types.Message):
     user_id = message.get_args()
     if user_id:
-        text = message.get_args(exclude=['user_id'])
+        args = message.get_args()
+        text = args.replace(user_id, '').strip()
         await bot.send_message(user_id, text)
     else:
         await message.reply('Пожалуйста, укажите user_id пользователя и текст сообщения.')
+
 
     
 
