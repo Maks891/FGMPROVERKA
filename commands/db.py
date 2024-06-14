@@ -135,6 +135,10 @@ async def get_balance(user_id):
     i = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
     return int(i)
 
+async def get_like(user_id):
+    i = cursor.execute('SELECT like FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    return int(i)
+
 
 async def getlimitdb(message):
     user_id = message.from_user.id
