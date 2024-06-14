@@ -423,7 +423,7 @@ async def resetlimit(message: types.Message):
 async def send_message_command(message: types.Message):
     user_id = message.get_args()
     if user_id:
-        await bot.send_message(user_id, 'Кармо пидорас сука')
+        await bot.send_message(user_id, 'Запомни брад, Кармо пидарас много использует бота, шлю сообщение чтобы ты меня спас 112. ПАМАГИ И СПАСИ ДЖЕФФА')
     else:
         await message.reply('Пожалуйста, укажите user_id пользователя.')
 
