@@ -443,10 +443,11 @@ async def zabrat_money(message):
         summ = int(su)
         summ2 = '{:,}'.format(summ).replace(',', '.')
     except:
-        return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
+        return await message.answer(f'{url}, вы не ввели сумму которую хотите забрать {rloser}')
 
     await zabrat_money_db(r_user_id, summ)
     await message.answer(f'💵 Вы забрали {summ2}$ у игрока {r_url} {rwin}')
+    await new_log(f'#забрать\nАдминистратор {user_name} ({user_id})\nСумма: {summ2}$\nу пользователя {r_user_name} ({r_user_id})', 'issuance_moneey')
     
 
 def reg(dp: Dispatcher):
