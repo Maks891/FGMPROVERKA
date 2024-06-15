@@ -15,6 +15,9 @@ async def give_money_db(user_id, r_user_id, summ, st):
     cursor.execute(f'UPDATE users SET balance = ? WHERE user_id = ?', (str(summ), r_user_id))
     conn.commit()
 
+async def zabrat_money_db(r_user_id, summ):
+    cursor.execute(f'UPDATE users SET balance = balance - ? WHERE user_id = ?', (summ, r_user_id))
+    conn.commit()
 
 async def give_bcoins_db(r_user_id, summ):
     cursor.execute(f'UPDATE users SET ecoins = ecoins + ? WHERE user_id = ?', (summ, r_user_id))
