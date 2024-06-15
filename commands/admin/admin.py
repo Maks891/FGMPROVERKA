@@ -420,22 +420,41 @@ async def resetlimit(message: types.Message):
 
     
 
-async def send_message_command(message: types.Message):
-    user_id = message.get_args()
-    if user_id:
-        args = message.get_args()
-        text = args.replace(user_id, '').strip()
-        await bot.send_message(user_id, text)
-    else:
-        await message.reply('Пожалуйста, укажите user_id пользователя и текст сообщения.')
+async def zabrat_money(message):
+    user_id = message.from_user.id
+    status = await getstatus(user_id)
+    if user_id not in [6888643375, 1688468160] and status == 0:
+        return await message.answer('👮‍♂️ Вы не являетесь администратором бота')
 
+    user_name = await get_name(user_id)
+    rwin, rloser = await win_luser()
+    url = await geturl(user_id, user_name)
 
+    try:
+        r_user_id = message.reply_to_message.from_user.id
+        r_user_name = await get_name(r_user_id)
+        r_url = await geturl(r_user_id, r_user_name)
+    except:
+        return await message.answer(f'{url}, чтобы забрать деньги нужно ответить на сообщение пользователя {rloser}')
+
+    try:
+        su = message.text.split()[1]
+        su = (su).replace('к', '000').replace('м', '000000').replace('.', '')
+        summ = int(su)
+        summ2 = '{:,}'.format(summ).replace(',', '.')
+    except:
+        return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
+
+        cursor.execute(f'UPDATE users SET balance = balance - ? WHERE user_id = ?', (summ, r_user_id))
+        conn.commit()
+        await message.answer(f'💵 Вы забрали {summ2}$ у игрока {r_url} {rwin}')
+        await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
     
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
-    dp.register_message_handler(send_message_command, commands='message')
     dp.register_message_handler(give_money, lambda message: message.text.lower().startswith('выдать'))
+    dp.register_message_handler(zabrat_money, lambda message: message.text.lower().startswith('забрать'))
     dp.register_message_handler(gived_money, lambda message: message.text.lower().startswith('идвыдать'))
     dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
     dp.register_message_handler(obnyl_cmd, lambda message: message.text.lower().startswith('обнулить'))
