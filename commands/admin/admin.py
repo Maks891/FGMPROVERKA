@@ -445,8 +445,7 @@ async def zabrat_money(message):
     except:
         return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
 
-        cursor.execute(f'UPDATE users SET balance = balance - ? WHERE user_id = ?', (summ, r_user_id))
-        conn.commit()
+        await zabrat_money_db(user_id, r_user_id, summ, 'rab')
         await message.answer(f'💵 Вы забрали {summ2}$ у игрока {r_url} {rwin}')
         await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
     
