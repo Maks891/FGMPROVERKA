@@ -12,6 +12,7 @@ issuance_money = 1  # выдача денег
 issuance_bcoins = 1  # выдача бкоинов
 issuance_obnyl = 1 # обнуление пользователей
 issuance_limit = 1 # обнуление лимитов
+issuance_moneey = 1
 
 async def new_log(txt, log_type):
     log_levels = {
@@ -20,7 +21,8 @@ async def new_log(txt, log_type):
         'issuance_money': issuance_money,
         'issuance_bcoins': issuance_bcoins,
         'issuance_obnyl': issuance_obnyl,
-        'issuance_limit': issuance_limit
+        'issuance_limit': issuance_limit,
+        'issuance_moneey': issuance_moneey
     }
 
     logging_level = log_levels.get(log_type, 0)
