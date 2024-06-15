@@ -444,10 +444,9 @@ async def zabrat_money(message):
         summ2 = '{:,}'.format(summ).replace(',', '.')
     except:
         return await message.answer(f'{url}, вы не ввели сумму которую хотите выдать {rloser}')
-    try:
-        await zabrat_money_db(user_id, r_user_id, summ, 'rab')
-    except Exception as e:
-        await message.answer(f'Произошла ошибка при забирании денег: {e}')
+
+    await zabrat_money_db(r_user_id, summ)
+    await message.answer(f'💵 Вы забрали {summ2}$ у игрока {r_url} {rwin}')
     
 
 def reg(dp: Dispatcher):
