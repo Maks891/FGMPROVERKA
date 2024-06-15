@@ -447,7 +447,6 @@ async def zabrat_money(message):
 
         await zabrat_money_db(user_id, r_user_id, summ, 'rab')
         await message.answer(f'💵 Вы забрали {summ2}$ у игрока {r_url} {rwin}')
-        await new_log(f'#бкоин-выдача\nАдмин {user_name} ({user_id})\nСумма: {summ2}$\nПользователю {r_user_name} ({r_user_id})', 'issuance_bcoins')
     
 
 def reg(dp: Dispatcher):
