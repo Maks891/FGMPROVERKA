@@ -421,11 +421,12 @@ async def resetlimit(message: types.Message):
     
 
 async def zabrat_money(message):
-    user_id = message.from_user.id
-    status = await getstatus(user_id)
-    if user_id not in [6888643375, 1688468160] and status == 0:
-        return await message.answer('👮‍♂️ Вы не являетесь администратором бота')
+    allowed_admin_ids = [6888643375, 1688468160]  # Список разрешенных ID администраторов
 
+    user_id = message.from_user.id
+    if user_id not in allowed_admin_ids:
+        return await message.answer('👮‍♂️ Вы не являетесь администратором бота')
+        
     user_name = await get_name(user_id)
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
