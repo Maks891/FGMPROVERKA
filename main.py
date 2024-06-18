@@ -272,18 +272,29 @@ async def main(dp):
 if __name__ == '__main__':
     from aiogram import executor
 
-    commands.property.main.reg(dp)
-    commands.property.buy.reg(dp)
+if __name__ == '__main__':
+    from aiogram import executor
+
+    dp.filters_factory.bind(FilterAdmin)
+
+    commands.basic.property.main.reg(dp)
     commands.admin.admin.reg(dp)
+    commands.entertaining.earnings.farm.main.reg(dp)
+    commands.entertaining.earnings.business.main.reg(dp)
+    commands.entertaining.earnings.garden.main.reg(dp)
     commands.punishment.reg(dp)
-    commands.earnings.farm.main.reg(dp)
-    commands.earnings.business.main.reg(dp)
-    commands.earnings.garden.main.reg(dp)
-    commands.earnings.generator.main.reg(dp)
-    commands.earnings.quarry.main.reg(dp)
-    commands.balance.reg(dp)
-    commands.status.buy_status.reg(dp)
-    commands.status.main.reg(dp)
-    commands.earnings.tree.main.reg(dp)
+    commands.entertaining.earnings.generator.main.reg(dp)
+    commands.entertaining.earnings.quarry.main.reg(dp)
+    commands.basic.balance.reg(dp)
+    commands.basic.status.main.reg(dp)
+    commands.entertaining.earnings.tree.main.reg(dp)
+    commands.basic.ore.main.reg(dp)
+    commands.help.reg(dp)
+    commands.entertaining.rz.reg(dp)
+    commands.basic.top.reg(dp)
+    commands.entertaining.wedlock.reg(dp)
+    commands.clans.main.reg(dp)
+    commands.admin.promo.reg(dp)
 
     executor.start_polling(dp, on_startup=main, skip_updates=True)
+
